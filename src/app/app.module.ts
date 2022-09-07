@@ -12,6 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { UEService } from './services/ue.service';
+import { RoleService } from './services/role.service';
+import { QuestionService } from './services/question.service';
+import { ExamenService } from './services/examen.service';
+import { CompteService } from './services/compte.service';
 
 
 @NgModule({
@@ -29,7 +34,7 @@ import { ComponentsModule } from './components/components.module';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [UEService,RoleService,QuestionService,ExamenService,CompteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
