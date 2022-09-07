@@ -1,5 +1,6 @@
 import { Cours } from "./cours";
 import { Classe } from "./classe";
+import { Section } from "./section";
 
 export class Formation {
     idFormation!:number;
@@ -7,4 +8,5 @@ export class Formation {
     gradeFormation!:string;
     courses!:Cours[];
     classes!:Classe[];
+    section!:Section;
 }
