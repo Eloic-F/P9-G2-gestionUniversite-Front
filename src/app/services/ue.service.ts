@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UEService {
-  private baseUrl ="http://localhost:7070/ues"
+  private baseUrl=environment.apiBaseUrl+"ues"
 
   constructor(private httpClient:HttpClient) { }
     

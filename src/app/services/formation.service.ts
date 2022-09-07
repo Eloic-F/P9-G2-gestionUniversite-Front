@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormationService {
 
-  private baseUrl = "http:/localhost:7070/formations"
+  private baseUrl=environment.apiBaseUrl+"formations"
   constructor(private httpClient:HttpClient) {}
   
   public findAll() : Observable<any>{

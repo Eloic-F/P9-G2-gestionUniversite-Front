@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SectionService {
-  private baseUrl = "http:/localhost:7070/sections"
+  private baseUrl=environment.apiBaseUrl+"sections"
   constructor(private httpClient:HttpClient) {}
   
   public findAll() : Observable<any>{

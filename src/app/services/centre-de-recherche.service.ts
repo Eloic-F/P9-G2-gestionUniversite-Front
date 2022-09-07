@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CentreDeRechercheService {
-  private baseUrl = "http:/localhost:7070/centreDeRecherches"
+  private baseUrl=environment.apiBaseUrl+"centreDeRecherches"
   constructor(private httpClient:HttpClient) {}
   
   public findAll() : Observable<any>{

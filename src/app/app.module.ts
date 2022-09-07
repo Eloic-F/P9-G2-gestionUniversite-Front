@@ -17,6 +17,15 @@ import { RoleService } from './services/role.service';
 import { QuestionService } from './services/question.service';
 import { ExamenService } from './services/examen.service';
 import { CompteService } from './services/compte.service';
+import { PersonneService } from './services/personne.service';
+import { AcademieService } from './services/academie.service';
+import { CentreDeRechercheService } from './services/centre-de-recherche.service';
+import { ClasseService } from './services/classe.service';
+import { CoursService } from './services/cours.service';
+import { EvaluationService } from './services/evaluation.service';
+import { FormationService } from './services/formation.service';
+import { SectionService } from './services/section.service';
+import { UniversiteService } from './services/universite.service';
 
 
 @NgModule({
@@ -34,7 +43,7 @@ import { CompteService } from './services/compte.service';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [UEService,RoleService,QuestionService,ExamenService,CompteService],
+  providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,FormationService,SectionService,UniversiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
