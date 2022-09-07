@@ -4,7 +4,7 @@ import { Adresse } from "./adresse";
 export class Academie {
     idAcademie!: number;
     nomAcademie!: string;
-    adresseAcademie!: adresse;
+    adresseAcademie!: Adresse;
     logo!:File;
     universites!: Universite[];
 }

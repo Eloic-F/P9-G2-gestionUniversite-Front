@@ -5,6 +5,6 @@ export class Formation {
     idFormation!:number;
     titreFormation!:string;
     gradeFormation!:string;
-    courses!:cours[];
-    classes!:classe[];
+    courses!:Cours[];
+    classes!:Classe[];
 }

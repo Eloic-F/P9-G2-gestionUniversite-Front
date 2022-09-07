@@ -1,3 +1,13 @@
+import { Compte } from "./compte";
+import { Evaluation } from "./evaluation";
+import { Examen } from "./examen";
+import { Universite } from "./universite";
+import { Role } from "./role";
+import { Question } from "./question";
+import { Cours } from "./cours";
+import { Classe} from "./classe";
+import { Adresse } from "./adresse";
+
 export class Personne {
   id!: number;
   nom!: string;
@@ -15,6 +25,6 @@ export class Personne {
   examens!: Examen[];
   evaluations!: Evaluation[];
   courses!: Cours[];
-  questions!: Question[];
+  questions!:Question;
   roles!: Role[];
 }
