@@ -8,7 +8,6 @@ import { Personne } from '../model/personne';
 })
 export class PersonneService {
   private baseUrl=environment.apiBaseUrl+"personnes"
-  //Injecter dépendance qui permet d'utiliser verbes http
   constructor(private httpClient:HttpClient) { }
 
   public findAll():Observable<any>{
