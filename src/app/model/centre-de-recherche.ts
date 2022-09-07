@@ -1,4 +1,4 @@
-import { Adresse } from "./adresse";
+import { Adresse } from "../entities/adresse";
 import { Universite } from "./universite";
 
 export class CentreDeRecherche {

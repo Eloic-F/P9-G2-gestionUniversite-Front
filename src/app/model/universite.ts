@@ -1,7 +1,7 @@
 import { CentreDeRecherche } from "./centre-de-recherche";
 import { Personne } from "./personne";
 import { Section } from "./section";
-import { Adresse } from "./adresse";
+import { Adresse } from "../entities/adresse";
 import { Academie } from "./academie";
 
 export class Universite {

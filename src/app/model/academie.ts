@@ -1,5 +1,5 @@
+import { Adresse } from "../entities/adresse";
 import { Universite } from "./universite";
-import { Adresse } from "./adresse";
 
 export class Academie {
     idAcademie!: number;

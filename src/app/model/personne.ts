@@ -6,7 +6,7 @@ import { Role } from "./role";
 import { Question } from "./question";
 import { Cours } from "./cours";
 import { Classe} from "./classe";
-import { Adresse } from "./adresse";
+import { Adresse } from "../entities/adresse";
 
 export class Personne {
   id!: number;
