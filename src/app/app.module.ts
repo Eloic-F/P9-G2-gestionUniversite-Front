@@ -43,7 +43,9 @@ import { UniversiteService } from './services/universite.service';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,FormationService,SectionService,UniversiteService],
+  providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
+    AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,
+    FormationService,SectionService,UniversiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
