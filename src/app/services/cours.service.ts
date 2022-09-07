@@ -17,15 +17,11 @@ export class CoursService {
     return this.httpClient.get(this.baseUrl);
   }
   
-  public save(image:File,cours:Cours):Observable<any>{
-    const formData=new FormData();
-    formData.append('libelleCours',cours.libelleCours);
-    formData.append('dureeCours',cours.dureeCours);
-    formData.append('image',image);
-    const requete = new HttpRequest('POST',this.baseUrl,formData,
-    {reportProgress:true,responseType:'text'});
-    return this.httpClient.request(requete);
+
+  public save(cours:any):Observable<any>{
+    return this.httpClient.post(this.baseUrl,cours);
   }
+
   public delete(id:number) : Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/"+id);
   }
