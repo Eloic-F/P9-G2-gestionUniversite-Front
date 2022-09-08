@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Compte } from 'src/app/model/compte';
+import { Personne } from 'src/app/model/personne';
 import { CompteService } from 'src/app/services/compte.service';
+import { PersonneService } from 'src/app/services/personne.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,20 +12,34 @@ import { CompteService } from 'src/app/services/compte.service';
 export class UserProfileComponent implements OnInit {
 
   comptes!: any[];
+  personnes!: any[];
   compte : Compte = new Compte();
-  constructor(private compteService:CompteService) { }
+  personne : Personne = new Personne();
+
+
+  constructor(private compteService:CompteService,private personneService:PersonneService) { }
 
   ngOnInit(): void {
     this.findAllCompte();
+    this.findAllPersonne();
   }
   findAllCompte(){
     this.compteService.findAll().subscribe((data: any[]) => {this.comptes = data;});
+  }
+  findAllPersonne(){
+    this.personneService.findAll().subscribe((data: any[]) => {this.personnes = data;});
   }
   save(){
     this.compteService.save(this.compte).subscribe(
       ()=>{
         this.findAllCompte(); //update list
         this.compte = new Compte(); //vider formulaire
+      }
+    )
+    this.personneService.addPersonne(this.personne).subscribe(
+      ()=>{
+        this.findAllPersonne(); //update list
+        this.personne = new Personne(); //vider formulaire
       }
     )
   }
