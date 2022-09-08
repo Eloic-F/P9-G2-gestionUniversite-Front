@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public deleteQuestioin(id: number) {
+  public deleteQuestion(id: number) {
     this.questionService.delete(id).subscribe(() => {
       this.findAllQuestions();
     });

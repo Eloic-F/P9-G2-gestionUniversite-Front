@@ -95,6 +95,7 @@
           </div>
         </div>
       </div>
+      <!--
       <div class="col-md-6">
         <div class="form-group">
           <div class="input-group mb-4">
@@ -102,6 +103,7 @@
           </div>
         </div>
       </div>
+      -->
     </div>    
     <div class="row">
       <div class="col-md-6">
@@ -137,9 +139,9 @@
                     {{e.idEvaluation}}
                   </div>
                 </th>
-                <td>{{e.Commentaire}}</td>
+                <td>{{e.commentaire}}</td>
                 <td>{{e.cours}}</td>
-                <td>{{e.personne.id}}</td>
+                <td>{{e.personne.nom}}</td>
                 <td><button (click)="deleteEvaluation(e.idEvaluation)" class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
@@ -188,7 +190,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <select class="custom-select" name="categorie" id="" [(ngModel)]="question.personne">
+            <select class="custom-select" name="personne" id="" [(ngModel)]="question.personne">
               <option selected>Sélectionner un enseignant</option>
               <option [ngValue]="p" *ngFor="let p of users">{{p.nom}} {{p.prenom}}</option>
             </select>
