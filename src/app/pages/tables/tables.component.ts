@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cours } from 'src/app/model/cours';
+import { CoursService } from 'src/app/services/cours.service';
 
 @Component({
   selector: 'app-tables',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablesComponent implements OnInit {
 
-  constructor() { }
+  courss!: any[]; 
+  cours : Cours = new Cours();
+ 
+  constructor(private coursService:CoursService,) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.findAllCours();
+   
+  }
+  
+
+  findAllCours(){
+    this.coursService.findAll().subscribe((data: any[]) => {this.courss = data;});
   }
 
 }
