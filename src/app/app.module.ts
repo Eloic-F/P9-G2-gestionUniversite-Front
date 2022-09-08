@@ -28,6 +28,7 @@ import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -36,7 +37,7 @@ import { UniversiteService } from './services/universite.service';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
