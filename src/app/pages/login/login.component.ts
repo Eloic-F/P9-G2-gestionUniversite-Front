@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.findAllEvaluations();
   }
 
-  // Personne
+  // Personne : enseignant
   public findAllPersonne() {
     this.personneService.findAll().subscribe((data) => {
       this.users = data;
@@ -46,4 +46,18 @@ export class LoginComponent implements OnInit {
       this.evaluations=data;
     })
   }
+
+  // Questions
+  public deleteQuestioin(id: number) {
+    this.questionService.delete(id).subscribe(() => {
+      this.findAllQuestions();
+    });
+  }
+  //Evaluations
+  public deleteEvaluation(id: number) {
+    this.evaluationService.deleteEvaluation(id).subscribe(() => {
+      this.findAllEvaluations();
+    });
+  }
+
 }
