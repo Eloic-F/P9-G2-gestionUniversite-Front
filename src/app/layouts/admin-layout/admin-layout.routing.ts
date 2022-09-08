@@ -9,9 +9,9 @@ import { LoginComponent } from 'src/app/pages/login/login.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
+    { path: 'espace-compte',   component: UserProfileComponent },
+    { path: 'espace-cours',         component: TablesComponent },
+    { path: 'espace-enseignant',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'contact',          component: LoginComponent }
+    { path: 'contacts',          component: LoginComponent }
 ];
