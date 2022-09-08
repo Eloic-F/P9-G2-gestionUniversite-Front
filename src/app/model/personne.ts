@@ -21,10 +21,10 @@ export class Personne {
   password!: string;
   classe!: Classe;
   universite!: Universite;
-  compte!: Compte;
+  comptes!: Compte[];
   examens!: Examen[];
   evaluations!: Evaluation[];
   courses!: Cours[];
-  questions!:Question;
+  questions!:Question[];
   roles!: Role[];
 }
