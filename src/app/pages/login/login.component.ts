@@ -1,4 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Evaluation } from 'src/app/model/evaluation';
+import { Question } from 'src/app/model/question';
 import { EvaluationService } from 'src/app/services/evaluation.service';
 import { PersonneService } from 'src/app/services/personne.service';
 import { QuestionService } from 'src/app/services/question.service';
@@ -14,12 +16,18 @@ export class LoginComponent implements OnInit {
   roles!: any[];
   questions!: any[];
   evaluations!: any[];
+
+  question: Question = new Question();
+  evaluation: Evaluation = new Evaluation();
   constructor(private personneService: PersonneService, private questionService: QuestionService, private evaluationService: EvaluationService,private roleService:RoleService) {}
 
   ngOnInit() {
+    this.findAllPersonne();
+    this.findAllQuestions();
+    this.findAllEvaluations();
   }
 
-  // Personne
+  // Personne : enseignant
   public findAllPersonne() {
     this.personneService.findAll().subscribe((data) => {
       this.users = data;
@@ -43,4 +51,32 @@ export class LoginComponent implements OnInit {
       this.evaluations=data;
     })
   }
+
+  // Questions
+  public addQuestion() {
+    this.questionService.save(this.question).subscribe(() => {
+      this.findAllQuestions();
+      this.question = new Question();
+    });
+  }
+
+  public deleteQuestion(id: number) {
+    this.questionService.delete(id).subscribe(() => {
+      this.findAllQuestions();
+    });
+  }
+  //Evaluations
+  public addEvaluation() {
+    this.evaluationService.addEvaluation(this.evaluation).subscribe(() => {
+      this.findAllEvaluations();
+      this.evaluation = new Evaluation();
+    });
+  }
+
+  public deleteEvaluation(id: number) {
+    this.evaluationService.deleteEvaluation(id).subscribe(() => {
+      this.findAllEvaluations();
+    });
+  }
+
 }
