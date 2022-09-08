@@ -21,11 +21,9 @@
                 <th scope="col">Prenom</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Numéro de téléphone</th>
-                <th scope="col">Evaluer</th>
-                <th scope="col">Poser une question</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
               <!--
               <tr *ngFor="let u of users">-->
               <tr>
@@ -35,38 +33,8 @@
                   </div>
                 </th>
                 <td>ff</td>
-                <td>sdsgd@gmail.com</td>
-                <td>0604675354</td>
-                <td>
-                  <button type="button" class="btn btn-primary btn-sm">Evaluer</button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                    Poser une question
-                  </button>
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
+                <td><a href = "mailto: abc@example.com"><i class="ni ni-email-83"></i></a></td>
+                <td><a href="tel:+05890000111">Appeler</a></td>
               </tr>
             </tbody>
           </table>
