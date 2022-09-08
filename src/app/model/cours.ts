@@ -9,7 +9,7 @@ export class Cours {
     libelleCours!:string;
     dureeCours!:number;
     dateCours!:Date;
-    image!:string;
+    image!:File;
     ue!:UE;
     formation!:Formation;
     personne!:Personne;
