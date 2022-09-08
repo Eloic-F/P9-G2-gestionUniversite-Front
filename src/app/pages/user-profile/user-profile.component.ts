@@ -45,5 +45,6 @@ export class UserProfileComponent implements OnInit {
   }
   delete(id:number){
     this.compteService.delete(id).subscribe(()=>{this.findAllCompte()});
+    this.personneService.deletePersonne(id).subscribe(()=>{this.findAllPersonne()});
   }
 }
