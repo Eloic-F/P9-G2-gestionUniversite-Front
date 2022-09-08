@@ -67,33 +67,31 @@
   </div>
 
   <!-- Formulaire Evaluation -->
-  <form>
+  <form (ngSubmit)="addEvaluation()">
     <h3>Formulaire évaluation</h3>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <select class="custom-select">
+          <select class="custom-select" name="cours" id="" [(ngModel)]="evaluation.cours">
             <option selected>Sélectionner un cours</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>        </div>
+            <option [ngValue]="e" *ngFor="let e of evaluations">{{e.cours}}</option>
+          </select>
+        </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <select class="custom-select">
+          <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
             <option selected>Sélectionner un enseignant</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>        </div>
+            <option [ngValue]="p" *ngFor="let p of users">{{p.nom}} {{p.prenom}}</option>
+          </select>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <div class="input-group mb-4">
-            <textarea class="form-control form-control-alternative" rows="3" placeholder="Write a large text here ..."></textarea>
+            <textarea class="form-control form-control-alternative" rows="3" placeholder="Rédiger votre question" name="commentaire" id="" [(ngModel)]="evaluation.commentaire"></textarea>
           </div>
         </div>
       </div>
@@ -102,6 +100,13 @@
           <div class="input-group mb-4">
             <input class="btn btn-primary btn-sm" type="file" name="image">
           </div>
+        </div>
+      </div>
+    </div>    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <button class="btn btn-primary" type="button" >Ajouter une évaluation</button>
         </div>
       </div>
     </div>
@@ -170,34 +175,39 @@
   </div>
 
     <!-- Formulaires questions -->
-    <form>
+    <form (ngSubmit)="addQuestion()">
       <h3>Formulaire question</h3>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <select class="custom-select">
+            <select class="custom-select" name="categorie" id="" [(ngModel)]="question.categorie">
               <option selected>Sélectionner une catégorie</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>        </div>
+              <option [ngValue]="q" *ngFor="let q of questions">{{q.categorie}}</option>
+            </select>
+          </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <select class="custom-select">
+            <select class="custom-select" name="categorie" id="" [(ngModel)]="question.personne">
               <option selected>Sélectionner un enseignant</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>        </div>
+              <option [ngValue]="p" *ngFor="let p of users">{{p.nom}} {{p.prenom}}</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-4">
-              <textarea class="form-control form-control-alternative" rows="3" placeholder="Rédiger votre question"></textarea>
+              <textarea class="form-control form-control-alternative" rows="3" placeholder="Rédiger votre question" name="question" id="" [(ngModel)]="question.question"></textarea>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <button class="btn btn-primary" type="button" >Ajouter une question</button>
           </div>
         </div>
       </div>

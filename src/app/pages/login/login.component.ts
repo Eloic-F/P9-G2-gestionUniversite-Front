@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   // Questions
   public addQuestion() {
     this.questionService.save(this.question).subscribe(() => {
-      this.findAllQuestions(); //Mise à jour liste utilisateurs
+      this.findAllQuestions();
       this.question = new Question();
     });
   }
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
   //Evaluations
   public addEvaluation() {
     this.evaluationService.addEvaluation(this.evaluation).subscribe(() => {
-      this.findAllEvaluations(); //Mise à jour liste utilisateurs
+      this.findAllEvaluations();
       this.evaluation = new Evaluation();
     });
   }
