@@ -90,36 +90,45 @@
       <tr>
         <th scope="col">Numero du compte</th>
         <th scope="col">Status</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
         <th scope="col">Date de naissance</th>
         <th scope="col">Email</th>
         <th scope="col">Numero de téléphone</th>
         <!--<th scope="col">Adresse</th>-->
         <th scope="col">Identifiant</th>
         <th scope="col">Mot de passe</th>
+        <th scope="col">Action</th>
 
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of comptes" >
-        <th scope="row">
-          <div class="media align-items-center">
-            <a href="#" class="avatar rounded-circle mr-3">
-              <img alt="Image placeholder" src="assets/img/theme/bootstrap.jpg">
-            </a>
-            <div class="media-body">
-              <span class="mb-0 text-sm">Argon Design System</span>
+      <tr *ngFor="let c of comptes, let p of personnes" >
+          <th scope="row">
+            <div class="media align-items-center">
+              <a href="#" class="avatar rounded-circle mr-3">
+               <img alt="Image placeholder" src="assets/img/theme/bootstrap.jpg">
+              </a>
+              <div class="media-body">
+                 <span class="mb-0 text-sm">{{c.numeroCompte}}</span>
+              </div>
             </div>
-          </div>
-        </th>
-        <td>
-          $2,500 USD
-        </td>
-        <td>
-          <span class="badge badge-dot mr-4">
-            <i class="bg-warning"></i> pending
-          </span>
-        </td>
-        <td>
+          </th>
+          <td>
+            <span class="badge badge-dot mr-4">
+              <i class="bg-warning"></i> {{c.statut}}
+            </span>
+          </td>
+          <td>{{p.nom}}</td>
+          <td>{{p.prenom}}</td>
+          <td>{{p.dateNaissance}}</td>
+          <td>{{p.email}}</td>
+          <td>{{p.numeroTel}}</td>
+          <td>{{p.username}}</td>
+          <td>{{p.password}}</td>
+          <td><button class="btn btn-danger pull-right" (click)="deletePersonne(p.idPersonne)">Supprimer le compte ?</button></td>
+
+         <!--<td>
           <div class="avatar-group">
             <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
               <img alt="Image placeholder" src="assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
@@ -134,8 +143,8 @@
               <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
             </a>
           </div>
-        </td>
-        <td>
+          </td>-->
+         <!--<td>
           <div class="d-flex align-items-center">
             <span class="mr-2">60%</span>
             <div>
@@ -144,8 +153,8 @@
               </div>
             </div>
           </div>
-        </td>
-        <td class="text-right">
+         </td>
+         <td class="text-right">
           <div ngbDropdown placement="bottom-right">
             <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
               <i class="fas fa-ellipsis-v"></i>
@@ -156,7 +165,7 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
-        </td>
+          </td>-->
       </tr>
     </tbody>
   </table>
