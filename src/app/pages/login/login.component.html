@@ -114,6 +114,7 @@
                 <th scope="col">Contenu Question</th>
                 <th scope="col">catégorie</th>
                 <th scope="col">Etudiant</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -126,6 +127,7 @@
                 <td>{{q.question}}</td>
                 <td>{{q.categorie}}</td>
                 <td>{{q.personne.id}}</td>
+                <td><button class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
           </table>
@@ -173,6 +175,7 @@
                 <th scope="col">Contenu évaluation</th>
                 <th scope="col">Cours associé</th>
                 <th scope="col">Enseignant</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -185,6 +188,7 @@
                 <td>{{e.Commentaire}}</td>
                 <td>{{e.cours}}</td>
                 <td>{{e.personne.id}}</td>
+                <td><button class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
           </table>
