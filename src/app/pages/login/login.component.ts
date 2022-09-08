@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(private personneService: PersonneService, private questionService: QuestionService, private evaluationService: EvaluationService,private roleService:RoleService) {}
 
   ngOnInit() {
+    this.findAllPersonne();
+    this.findAllQuestions();
+    this.findAllEvaluations();
   }
 
   // Personne
