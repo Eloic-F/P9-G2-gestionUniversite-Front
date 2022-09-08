@@ -115,6 +115,25 @@
                 <td>{{u.libelleCours}}</td>
                 <td>{{u.dureeCours}}</td>
                 <td>{{u.image}}</td>
+                <tr>
+                  <div class="card-body">
+                    <div class="card-header border-0">
+                      <h3 class="mb-0">Questions de cours</h3>
+                    </div>
+                    <form (ngSubmit)="save()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input matInput placeholder="categorie" type="text" [(ngModel)]="question.categorie" name="categorie">
+                            </div>
+                            <div class="col-md-6">
+                              <input matInput placeholder="question" type="text" [(ngModel)]="question.question" name="question">
+                           </div>
+                        </div>
+                        <button mat-raised-button class="btn btn-danger pull-right">Envoyer</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+              </tr>
             </tbody>
           </table>
         </div>
