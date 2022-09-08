@@ -15,13 +15,13 @@ export class PersonneService {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
 
-  public findAllQuestions(idPersonne:number):Observable<void>{
+  public findAllQuestions(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/"questions/${idPersonne}`);
   }
-  public findAllExamens(idPersonne:number):Observable<void>{
+  public findAllExamens(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/"examens/${idPersonne}`);
   }
-  public findAllCours(idPersonne:number):Observable<void>{
+  public findAllCours(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/"cours/${idPersonne}`);
   }
 
