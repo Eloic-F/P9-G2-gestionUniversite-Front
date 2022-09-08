@@ -15,6 +15,17 @@ export class PersonneService {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
 
+  public findAllQuestions(idPersonne:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"questions/${idPersonne}`);
+  }
+  public findAllExamens(idPersonne:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"examens/${idPersonne}`);
+  }
+  public findAllCours(idPersonne:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"cours/${idPersonne}`);
+  }
+
+
   public addPersonne(personne:Personne):Observable<any>{
     return this.httpClient.post<any>(`${this.baseUrl}`, personne);
   }
@@ -22,6 +33,10 @@ export class PersonneService {
   public deletePersonne(idPersonne:number):Observable<void>{
     return this.httpClient.delete<any>(`${this.baseUrl}/${idPersonne}`);
   }
+  public findOne(idPersonne:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
+  }
+
 
   /*public updatePersonne(personne:Personne):Observable<any>{
     return this.httpClient.put<any>(`${this.baseUrl}`, personne);

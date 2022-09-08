@@ -6,9 +6,10 @@ import { UE } from "./ue";
 
 export class Cours {
     idCours!:number;
-    libelleCours!:String;
+    libelleCours!:string;
     dureeCours!:number;
-    image!:String;
+    dateCours!:Date;
+    image!:string;
     ue!:UE;
     formation!:Formation;
     personne!:Personne;
