@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Evaluation } from 'src/app/model/evaluation';
 import { Question } from 'src/app/model/question';
+import { CoursService } from 'src/app/services/cours.service';
 import { EvaluationService } from 'src/app/services/evaluation.service';
 import { PersonneService } from 'src/app/services/personne.service';
 import { QuestionService } from 'src/app/services/question.service';
@@ -16,15 +17,19 @@ export class LoginComponent implements OnInit {
   roles!: any[];
   questions!: any[];
   evaluations!: any[];
+  courses!: any[];
 
   question: Question = new Question();
   evaluation: Evaluation = new Evaluation();
-  constructor(private personneService: PersonneService, private questionService: QuestionService, private evaluationService: EvaluationService,private roleService:RoleService) {}
+  constructor(private personneService: PersonneService, private questionService: QuestionService,
+    private evaluationService: EvaluationService,private roleService:RoleService,
+    private coursService:CoursService) {}
 
   ngOnInit() {
     this.findAllPersonne();
     this.findAllQuestions();
     this.findAllEvaluations();
+    this.findAllCours();
   }
 
   // Personne : enseignant
@@ -79,4 +84,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Cours
+  public findAllCours() {
+    this.coursService.findAll().subscribe((data) => {
+      this.courses = data;
+    });
+  }
 }

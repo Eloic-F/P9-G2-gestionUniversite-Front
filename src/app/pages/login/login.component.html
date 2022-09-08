@@ -74,7 +74,7 @@
         <div class="form-group">
           <select class="custom-select" name="cours" id="" [(ngModel)]="evaluation.cours">
             <option selected>Sélectionner un cours</option>
-            <option [ngValue]="e" *ngFor="let e of evaluations">{{e.cours}}</option>
+            <option [ngValue]="c" *ngFor="let c of courses">{{c.libelleCours}}</option>
           </select>
         </div>
       </div>
@@ -108,7 +108,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <button class="btn btn-primary" type="button" >Ajouter une évaluation</button>
+          <button class="btn btn-primary" type="submit" >Ajouter une évaluation</button>
         </div>
       </div>
     </div>
@@ -208,10 +208,11 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <button class="btn btn-primary" type="button" >Ajouter une question</button>
+            <button class="btn btn-primary" type="submit" >Ajouter une question</button>
           </div>
         </div>
       </div>
+      <div class="clearfix"></div>
     </form>
   
     <!-- Table questions étudiants -->
