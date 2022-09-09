@@ -29,7 +29,7 @@ export class AppService {
             if(this.responseAll['roles'][i]['idRole']==1){
               this.isAdmin = true;
             }
-            if(this.responseAll['roles'][i]['idRole']==3){
+            if(this.responseAll['roles'][i]['idRole']==2){
               this.isEnseignant = true;
             }
             if(this.responseAll['roles'][i]['idRole']==3){

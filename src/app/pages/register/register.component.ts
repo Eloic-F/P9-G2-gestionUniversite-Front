@@ -12,7 +12,7 @@ export class RegisterComponent {
   credentials = {username: '', password:''}
   constructor(private appService:AppService,private httplClient:HttpClient,private router:Router) { }
   login(){
-    this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/login")});
+    this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/contacts")});
     return false;
   }
 
