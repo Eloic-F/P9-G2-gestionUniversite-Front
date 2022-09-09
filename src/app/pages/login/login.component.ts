@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Evaluation } from 'src/app/model/evaluation';
 import { Question } from 'src/app/model/question';
+import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { EvaluationService } from 'src/app/services/evaluation.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   evaluation: Evaluation = new Evaluation();
   constructor(private personneService: PersonneService, private questionService: QuestionService,
     private evaluationService: EvaluationService,private roleService:RoleService,
-    private coursService:CoursService) {}
+    private coursService:CoursService,private appService:AppService) {}
 
   ngOnInit() {
     this.findAllPersonne();
@@ -90,4 +91,17 @@ export class LoginComponent implements OnInit {
       this.courses = data;
     });
   }
+
+  //SECURITY
+  authenticated(){
+    return  this.appService.authenticated; // false
+   }
+   //
+   authorities(){
+     if(this.appService.isAdmin == true){
+       return false;
+     }else{
+       return true;
+     }
+   }
 }
