@@ -20,7 +20,7 @@ export class Personne {
   username!: string;
   password!: string;
   classe!: Classe;
-  universite!: Universite;
+  universites!: Universite[];
   comptes!: Compte[];
   examens!: Examen[];
   evaluations!: Evaluation[];

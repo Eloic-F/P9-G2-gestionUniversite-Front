@@ -19,5 +19,6 @@ export class UniversiteService {
   public delete(id:number) : Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/"+id);
   }
+  
 }
 
