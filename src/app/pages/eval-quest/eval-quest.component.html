@@ -74,15 +74,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let e of evaluations">
+              <tr *ngFor="let e of evaluations; let i = index">
                 <th scope="row">
                   <div class="media align-items-center">
                     {{e.idEvaluation}}
                   </div>
                 </th>
                 <td>{{e.commentaire}}</td>
-                <td>{{e.cours}}</td>
-                <td></td>
+                <td>{{courses[i].libelleCours}}</td>
+                <td>{{personnes[i].nom}}</td>
                 <td><button (click)="deleteEvaluation(e.idEvaluation)" class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
