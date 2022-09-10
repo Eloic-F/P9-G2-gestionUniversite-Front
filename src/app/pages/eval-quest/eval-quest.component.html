@@ -82,7 +82,7 @@
                 </th>
                 <td>{{e.commentaire}}</td>
                 <td>{{courses[i].libelleCours}}</td>
-                <td>{{personnes[i].nom}}</td>
+                <td>{{personnes[i].prenom}} {{personnes[i].nom}}</td>
                 <td><button (click)="deleteEvaluation(e.idEvaluation)" class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
@@ -172,12 +172,12 @@
                 <th scope="col">ID question</th>
                 <th scope="col">Contenu Question</th>
                 <th scope="col">catégorie</th>
-                <th scope="col">Etudiant</th>
+                <th scope="col">Enseignant</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let q of questions">
+              <tr *ngFor="let q of questions, let i = index">
                 <th scope="row">
                   <div class="media align-items-center">
                     {{q.idQuestion}}
@@ -185,7 +185,7 @@
                 </th>
                 <td>{{q.question}}</td>
                 <td>{{q.categorie}}</td>
-                <td></td>
+                <td>{{personnes[i].prenom}} {{personnes[i].nom}}</td>
                 <td><button (click)="deleteQuestion(q.idQuestion)" class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>
