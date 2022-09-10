@@ -13,7 +13,7 @@ import { RoleService } from 'src/app/services/role.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  users!: any[];
+  personnes!: any[];
   roles!: any[];
 
   constructor(private personneService: PersonneService, private roleService:RoleService) {}
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   // Personne : enseignant
   public findAllPersonne() {
     this.personneService.findAll().subscribe((data) => {
-      this.users = data;
+      this.personnes = data;
     });
   }
 

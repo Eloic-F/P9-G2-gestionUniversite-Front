@@ -13,7 +13,7 @@ import { RoleService } from 'src/app/services/role.service';
   styleUrls: ['./eval-quest.component.scss']
 })
 export class EvalQuestComponent implements OnInit {
-  users!: any[];
+  personnes!: any[];
   roles!: any[];
   questions!: any[];
   evaluations!: any[];
@@ -37,7 +37,7 @@ export class EvalQuestComponent implements OnInit {
   // Personne : enseignant
   public findAllPersonne() {
     this.personneService.findAll().subscribe((data) => {
-      this.users = data;
+      this.personnes = data;
     });
   }
 

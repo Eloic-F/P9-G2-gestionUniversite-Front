@@ -24,15 +24,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let u of users">
+              <tr *ngFor="let p of personnes">
                 <th scope="row">
                   <div class="media align-items-center">
-                    {{u.nom}}
+                    {{p.nom}}
                   </div>
                 </th>
-                <td>{{u.prenom}}</td>
-                <td><a href = "mailto: {{u.email}}"><i class="ni ni-email-83"></i></a></td>
-                <td><a href="tel:+0{{u.numeroTel}}">Appeler</a></td>
+                <td>{{p.prenom}}</td>
+                <td><a href = "mailto: {{p.email}}"><i class="ni ni-email-83"></i></a></td>
+                <td><a href="tel:+0{{p.numeroTel}}">Appeler</a></td>
               </tr>
             </tbody>
           </table>

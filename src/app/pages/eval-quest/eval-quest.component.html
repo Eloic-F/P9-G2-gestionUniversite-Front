@@ -22,7 +22,7 @@
         <div class="form-group">
           <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
             <option selected>Sélectionner un enseignant</option>
-            <option [ngValue]="p" *ngFor="let p of users">{{p.nom}} {{p.prenom}}</option>
+            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
           </select>
         </div>
       </div>
@@ -133,7 +133,7 @@
         <div class="form-group">
           <select class="custom-select" name="personne" id="" [(ngModel)]="question.personne">
             <option selected>Sélectionner un enseignant</option>
-            <option [ngValue]="p" *ngFor="let p of users">{{p.nom}} {{p.prenom}}</option>
+            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
           </select>
         </div>
       </div>
