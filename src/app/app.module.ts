@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -26,8 +26,17 @@ import { EvaluationService } from './services/evaluation.service';
 import { FormationService } from './services/formation.service';
 import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
-
-
+import { Observable } from 'rxjs';
+import { AppService } from './services/app.service';
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor{
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With','XMLHttpRequest')
+    });
+    return next.handle(xhr);
+  }
+}
 
 @NgModule({
   imports: [
@@ -46,7 +55,7 @@ import { UniversiteService } from './services/universite.service';
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,
-    FormationService,SectionService,UniversiteService],
+    FormationService,SectionService,UniversiteService,AppService,{provide:HTTP_INTERCEPTORS,useClass:XhrInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
