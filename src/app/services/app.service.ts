@@ -23,7 +23,7 @@ export class AppService {
       );
       this.httpClient.get(environment.apiBaseUrl+'login/user',{headers:headers}).subscribe(response =>{
         this.responseAll = response;
-        if(this.responseAll['login']){
+        if(this.responseAll['username']){
           this.authenticated = true;
           for(let i=0;i<this.responseAll['roles'].length;i++){
             if(this.responseAll['roles'][i]['idRole']==1){
