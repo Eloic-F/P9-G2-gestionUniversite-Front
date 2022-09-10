@@ -26,6 +26,7 @@ import { EvaluationService } from './services/evaluation.service';
 import { FormationService } from './services/formation.service';
 import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
+import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
 
 
 

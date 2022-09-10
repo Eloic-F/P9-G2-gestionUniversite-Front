@@ -6,6 +6,7 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { EvalQuestComponent } from 'src/app/pages/eval-quest/eval-quest.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -13,5 +14,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'espace-cours',         component: TablesComponent },
     { path: 'espace-enseignant',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'contacts',          component: LoginComponent }
+    { path: 'contacts',          component: LoginComponent },
+    { path: 'evaluation-question',  component:EvalQuestComponent}
 ];
