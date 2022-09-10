@@ -17,5 +17,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'contacts',          component: LoginComponent },
     { path: 'evaluation-question',  component:EvalQuestComponent},
-    { path: 'profil',  component:ProfilComponent}
+    { path: 'mon-profil',  component:ProfilComponent}
 ];
