@@ -27,6 +27,7 @@ import { FormationService } from './services/formation.service';
 import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
 import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
+import { ProfilComponent } from './pages/profil/profil.component';
 
 
 
@@ -43,7 +44,8 @@ import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ProfilComponent
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,
