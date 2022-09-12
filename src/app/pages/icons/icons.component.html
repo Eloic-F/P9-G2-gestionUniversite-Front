@@ -260,16 +260,17 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="reponse()"></form>
+              <!--<form [formGroup]="editForm">-->
              <tr *ngFor="let q of questions">
               <td>{{q.personne.nom}}</td>
               <td>{{q.question}}</td>
               <td>                  <span class="badge badge-dot mr-4">
                 <i class="bg-warning"></i> pending
               </span></td>
-              <td><input type="text" [(ngModel)]="question.question"></td>
-              <td><button>Envoyer</button></td>
+              <td><input type="text" [(ngModel)]="question.question" formControlName="question"></td>
+              <td><button (click)="reponse()">Envoyer</button></td>
              </tr>
+            <!--</form>-->
             </tbody>
           </table>
         </div>
