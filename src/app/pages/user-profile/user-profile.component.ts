@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Academie } from 'src/app/model/academie';
 import { CentreDeRecherche } from 'src/app/model/centre-de-recherche';
 import { Compte } from 'src/app/model/compte';
@@ -46,7 +47,8 @@ export class UserProfileComponent implements OnInit {
               private universiteService:UniversiteService,
               private centreDeRechercheService:CentreDeRechercheService,
               private sectionService:SectionService,
-              private formationService:SectionService) { }
+              private formationService:SectionService,
+              private router:Router) { }
 
   ngOnInit(): void {
     this.findAllCompte();
@@ -96,10 +98,49 @@ export class UserProfileComponent implements OnInit {
         this.personne = new Personne(); //vider formulaire
       }
     )
+    this.academieService.save(this.academie).subscribe(
+      ()=>{
+        this.findAllAcademie; //update list
+        this.academie = new Academie(); //vider formulaire
+      }
+    )
+    this.universiteService.save(this.universite).subscribe(
+      ()=>{
+        this.findAllUniversite(); //update list
+        this.universite = new Universite(); //vider formulaire
+      }
+    )
+    this.centreDeRechercheService.save(this.centreDeRecherche).subscribe(
+      ()=>{
+        this.findAllCentreDeRecherche(); //update list
+        this.centreDeRecherche = new CentreDeRecherche(); //vider formulaire
+      }
+    )
+    this.sectionService.save(this.section).subscribe(
+      ()=>{
+        this.findAllSection(); //update list
+        this.section = new Section(); //vider formulaire
+      }
+    )
+    this.formationService.save(this.formation).subscribe(
+      ()=>{
+        this.findAllFormation(); //update list
+        this.formation = new Formation(); //vider formulaire
+      }
+    )
 
   }
   delete(id:number){
     this.compteService.delete(id).subscribe(()=>{this.findAllCompte()});
     this.personneService.deletePersonne(id).subscribe(()=>{this.findAllPersonne()});
   }
+  editUser(user:Personne){
+    // Step 2
+    localStorage.removeItem("editUserId");
+    // Step 1
+    localStorage.setItem("editUserId",user.id.toString());
+    // Step 3
+    // localhost:4200/editUser/3
+    this.router.navigate(['/editUser',user.id]);
+    }
 }

@@ -1,0 +1,41 @@
+<p>edit-user works!</p>
+<div>
+    <h1>Mise à jour d'un utilisateur</h1>
+    <form [formGroup]="editForm">
+        <table>
+             <tr>
+                 <td>Nom</td>
+                 <td><input type="text" [(ngModel)]="personne.nom" formControlName="nom"/></td>
+             </tr>
+             <tr>
+                <td>Prénom</td>
+                <td><input type="text" [(ngModel)]="personne.prenom" formControlName="prenom"/></td>
+             </tr>
+             <tr>
+                <td>Date de naissance</td>
+                <td><input type="date" [(ngModel)]="personne.dateNaissance" formControlName="dateNaissance"/></td>
+             </tr>
+             <tr>
+                <td>Email</td>
+                <td><input type="test" [(ngModel)]="personne.email" formControlName="email"/></td>
+             </tr>
+             <tr>
+                <td>Numero de telephone</td>
+                <td><input type="text" [(ngModel)]="personne.numeroTel" formControlName="numeroTel"/></td>
+             </tr>
+             
+             <tr>
+                <td>Identifiant</td>
+                <td><input type="text" [(ngModel)]="personne.username" formControlName="username"/></td>
+             </tr>
+             <tr>
+                <td>Mot de passe</td>
+                <td><input type="text" [(ngModel)]="personne.password" formControlName="password"/></td>
+             </tr>
+             <tr>
+                <td colspan="2"><button (click)="updatePersonne()">Valider la candidature</button></td>
+             </tr>
+             
+        </table>
+    </form>
+</div>
