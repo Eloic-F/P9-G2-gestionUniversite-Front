@@ -33,9 +33,14 @@ export class PersonneService {
   public deletePersonne(idPersonne:number):Observable<void>{
     return this.httpClient.delete<any>(`${this.baseUrl}/${idPersonne}`);
   }
-  public findOne(idPersonne:number):Observable<void>{
+  public findOne(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
   }
+  public findOneByUsername(username:string):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/secu/${username}`);
+  }
+
+
 
 
   /*public updatePersonne(personne:Personne):Observable<any>{

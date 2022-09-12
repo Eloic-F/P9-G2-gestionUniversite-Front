@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { find } from 'rxjs';
 import { Examen } from 'src/app/model/examen';
 import { Personne } from 'src/app/model/personne';
@@ -19,6 +20,7 @@ export interface IHash{
 })
 
 export class IconsComponent implements OnInit {
+  editForm:FormGroup
   utilisateur:Personne=new Personne;
   cours!:any[];
   questions!:any[];
@@ -27,18 +29,30 @@ export class IconsComponent implements OnInit {
   examen:Examen=new Examen;
   selectedFile:FileList;
   public copy: string;
-  constructor(private coursService:CoursService,private examenService:ExamenService,private questionService:QuestionService,private personneService:PersonneService) { }
+  constructor(private coursService:CoursService,private examenService:ExamenService,private questionService:QuestionService,private personneService:PersonneService,
+    private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    let userId=sessionStorage.getItem('UserId');
+    let name=sessionStorage.getItem("Username");
+    if(!userId){
+      alert("ErreurID")
+      return;
+    }
+    this.editForm=this.formBuilder.group({
+      id:[],
+      username:[],
+    })
+    this.personneService.findOne(+userId).subscribe(data => {this.editForm.setValue(data)})
+    this.ActualUser(+userId);
+    this.findAllCours(+userId);
+    this.findAllExamen(+userId);
+    this.findAllQuestion(+userId);
+
+ 
     
   }
-  OnInit(id:number) {
-    this.ActualUser(id);
-    this.findAllCours(id);
-    this.findAllExamen(id);
-    this.findAllQuestion(id);
 
-  }
   ActualUser(id:number){
     this.personneService.findOne(id).subscribe((data:any) =>{this.utilisateur=data})
 

@@ -19,6 +19,13 @@ export class TablesComponent implements OnInit {
   constructor(private coursService:CoursService,private questionService:QuestionService) { }
 
   ngOnInit(): void {
+    let userId=sessionStorage.getItem('UserId');
+    let name=sessionStorage.getItem("Username");
+    if(!userId){
+      alert("ErreurID")
+      return;
+    }
+    
     this.findAllCours();
     this.findAllQuestion();
    
