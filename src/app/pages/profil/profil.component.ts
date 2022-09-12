@@ -7,6 +7,7 @@ import { Personne } from 'src/app/model/personne';
 import { Section } from 'src/app/model/section';
 import { Universite } from 'src/app/model/universite';
 import { AcademieService } from 'src/app/services/academie.service';
+import { AppService } from 'src/app/services/app.service';
 import { CentreDeRechercheService } from 'src/app/services/centre-de-recherche.service';
 import { CompteService } from 'src/app/services/compte.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -45,7 +46,8 @@ export class ProfilComponent implements OnInit {
               private universiteService:UniversiteService,
               private centreDeRechercheService:CentreDeRechercheService,
               private sectionService:SectionService,
-              private formationService:SectionService) { }
+              private formationService:SectionService,
+              private appService:AppService) { }
 
   ngOnInit(): void {
     this.findAllCompte();
@@ -82,4 +84,16 @@ export class ProfilComponent implements OnInit {
   findAllFormation(){
     this.formationService.findAll().subscribe((data: any[]) => {this.formations = data;});
   }
+  //
+  authenticated(){
+    return  this.appService.authenticated; // false
+   }
+   //
+   authorities(){
+     if(this.appService.isAdmin == true){
+       return false;
+     }else{
+       return true;
+     }
+   }
 }

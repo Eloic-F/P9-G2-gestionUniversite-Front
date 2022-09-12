@@ -1,3 +1,4 @@
+<div [hidden]="!authenticated()">
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
   style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
   <!-- Mask -->
@@ -177,4 +178,9 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+<div [hidden]="authenticated()">
+  <p><a [routerLink]="['/authentification']">Connectez-vous</a> pour accéder à votre profil</p>
 </div>
