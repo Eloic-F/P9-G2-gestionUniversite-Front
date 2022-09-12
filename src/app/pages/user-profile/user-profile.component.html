@@ -2,7 +2,7 @@
 
 <div class="card" style="width: 80%;">
   <div class="card-body">
-    <h2 class="card-title">Ajouter un compte</h2>
+    <h1 class="card-title">Ajouter un compte</h1>
     <form (ngSubmit)="save()">
       <div class="row">
         <div class="col-md-6">
@@ -18,8 +18,7 @@
           </div>
         </div>
       </div>
-
-      <td>Roles</td>
+      <h2 class="card-title">Ajouter un role</h2>
                 <td>
                     <select multiple name="roles" [(ngModel)]="personne.roles">
                         <option *ngFor="let r of roles" [ngValue]="r">
@@ -27,7 +26,61 @@
                         </option>
                     </select>
                 </td>
+                <br>
+      <h2 class="card-title">Ajouter une academie</h2>
+                <td>
+                    <select multiple name="academies" [(ngModel)]="academie.nomAcademie">
+                        <option *ngFor="let ac of academies" [ngValue]="ac">
+                            {{ac.nomAcademie}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+       <h2 class="card-title">Ajouter une Universite</h2>
+                <td>
+                    <select multiple name="universites" [(ngModel)]="universite.nomUniversite">
+                        <option *ngFor="let uni of universites" [ngValue]="uni">
+                            {{uni.nomUniversite}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+        <h2 class="card-title">Ajouter un centre de recherche</h2>
+                <td>
+                    <select multiple name="centreDeRecherches" [(ngModel)]="centreDeRecherche.nomCentreDeRecherche">
+                        <option *ngFor="let cdr of centreDeRecherches" [ngValue]="cdr">
+                            {{cdr.nomCentreDeRecherche}}
+                        </option>
+                    </select>
+                </td>
+                <br> 
+      <h2 class="card-title">Ajouter une section</h2>
+                <td>
+                    <select multiple name="sections" [(ngModel)]="section.nomSection">
+                        <option *ngFor="let sec of sections" [ngValue]="sec">
+                            {{sec.nomSection}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une formation</h2>
+              <h4 class="card-title">Unité d'enseignement</h4>
+                <td>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                        <option *ngFor="let fo of formations" [ngValue]="fo">
+                            {{fo.titreFormation}}
+                        </option>
+                    </select>
+               <!-- <h4 class="card-title">Grade</h4>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                    <option *ngFor="let fo of formations" [ngValue]="fo">
+                           {{fo.gradeFormation}}
+                    </option>
+                    </select>-->
+                </td>
+                <br>   
 
+      <h2 class="card-title">Coordonnées de l'utilisateur</h2>     
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -49,6 +102,7 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -63,14 +117,16 @@
           </div>
         </div>
       </div>
-      <!--
-      <div class="row">
+     
+      <!--<div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" placeholder="Adresse" [(ngModel)]="personne.adressePersonne.rue" name ="rue">
+            <input type="text" placeholder="Adresse" [(ngModel)]="personne.rue" name ="rue">
           </div>
         </div>
       </div>-->
+
+
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -85,16 +141,12 @@
           </div>
         </div>
       </div>
-
-     
-
       <button class="btn btn-primary" type="submit">Ajouter un nouveau compte</button>
       <div class="clearfix"></div>
     </form>
   </div>
 </div>
-
-
+     
 <br>
 <h2 class="card-title">Gestion des comptes</h2>
 
@@ -107,9 +159,9 @@
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
         <th scope="col">Date de naissance</th>
+        <!--<th scope="col">Adresse : rue</th>-->
         <th scope="col">Email</th>
         <th scope="col">Numero de téléphone</th>
-        <!--<th scope="col">Adresse</th>-->
         <th scope="col">Identifiant</th>
         <th scope="col">Mot de passe</th>
         <th scope="col">Roles</th>
@@ -124,14 +176,52 @@
           <td>{{personnes[i].nom}}</td>
           <td>{{personnes[i].prenom}}</td>
           <td>{{personnes[i].dateNaissance}}</td>
+         <!--<td>{{personnes[i].rue}}</td>--> 
           <td>{{personnes[i].email}}</td>
           <td>{{personnes[i].numeroTel}}</td>
           <td>{{personnes[i].username}}</td>
           <td>{{personnes[i].password}}</td>
-          <!--<td>{{p.roles.libelleRole}}</td> -->
+         <!-- <td>{{roles[i].libelleRole}}</td> -->
           <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Supprimer le compte ?</button></td>
 
       </tr>
     </tbody>
   </table>
+
+  <br>
+  <h2 class="card-title">Gestion candidature des enseignants</h2>
+
+  <div class="table-responsive">
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Email</th>
+          <th scope="col">Numero de téléphone</th>
+          <th scope="col">Identifiant</th>
+          <th scope="col">Mot de passe</th>
+          <th scope="col">Roles</th>
+          <th scope="col">Action</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of personnes ; let i = index" >
+            <td>{{personnes[i].nom}}</td>
+            <td>{{personnes[i].prenom}}</td>
+            <td>{{personnes[i].dateNaissance}}</td>
+           <!--<td>{{personnes[i].rue}}</td>--> 
+            <td>{{personnes[i].email}}</td>
+            <td>{{personnes[i].numeroTel}}</td>
+            <td>{{personnes[i].username}}</td>
+            <td>{{personnes[i].password}}</td>
+            <!--<td>{{roles[i].libelleRole}}</td> -->
+            <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Valider la candidature ?</button></td>
+            <td><button (click)="editUser(p)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>
