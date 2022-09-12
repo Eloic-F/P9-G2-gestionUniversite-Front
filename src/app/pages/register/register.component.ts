@@ -14,7 +14,7 @@ export class RegisterComponent {
   credentials = {username: '', password:''}
   constructor(private appService:AppService,private httplClient:HttpClient,private router:Router,private personneService:PersonneService) { }
   login(){
-    this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/user-profile")});
+    this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/mon-profil")});
     var personne:Personne = new Personne();
     this.personneService.findOneByUsername(this.credentials.username).subscribe(data=>{personne=data});
     sessionStorage.setItem("UserId",personne.id.toString());
