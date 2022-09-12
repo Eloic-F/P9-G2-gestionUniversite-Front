@@ -54,6 +54,31 @@
                     </select>
                 </td>
                 <br> 
+      <h2 class="card-title">Ajouter une section</h2>
+                <td>
+                    <select multiple name="sections" [(ngModel)]="section.nomSection">
+                        <option *ngFor="let sec of sections" [ngValue]="sec">
+                            {{sec.nomSection}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une formation</h2>
+              <h4 class="card-title">Unité d'enseignement</h4>
+                <td>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                        <option *ngFor="let fo of formations" [ngValue]="fo">
+                            {{fo.titreFormation}}
+                        </option>
+                    </select>
+               <!-- <h4 class="card-title">Grade</h4>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                    <option *ngFor="let fo of formations" [ngValue]="fo">
+                           {{fo.gradeFormation}}
+                    </option>
+                    </select>-->
+                </td>
+                <br>   
 
       <h2 class="card-title">Coordonnées de l'utilisateur</h2>     
       <div class="row">
@@ -156,7 +181,7 @@
           <td>{{personnes[i].numeroTel}}</td>
           <td>{{personnes[i].username}}</td>
           <td>{{personnes[i].password}}</td>
-          <td>{{roles[i].libelleRole}}</td> 
+         <!-- <td>{{roles[i].libelleRole}}</td> -->
           <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Supprimer le compte ?</button></td>
 
       </tr>
@@ -192,12 +217,11 @@
             <td>{{personnes[i].numeroTel}}</td>
             <td>{{personnes[i].username}}</td>
             <td>{{personnes[i].password}}</td>
-            <td>{{roles[i].libelleRole}}</td> 
+            <!--<td>{{roles[i].libelleRole}}</td> -->
             <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Valider la candidature ?</button></td>
-  
+            <td><button (click)="editUser(p)">Modifier</button></td>
         </tr>
       </tbody>
     </table>
-  
 
 </div>

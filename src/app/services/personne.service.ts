@@ -56,6 +56,14 @@ export class PersonneService {
     return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
   }
 
+  public getPersonne(idPersonne:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
+  }
+  public updatePersonne(user:any):Observable<any>{
+    var userParse = JSON.parse(user);
+    return this.httpClient.put(this.baseUrl+'/'+userParse.idPersonne,userParse);
+  }
+
 
   /*public updatePersonne(personne:Personne):Observable<any>{
     return this.httpClient.put<any>(`${this.baseUrl}`, personne);
