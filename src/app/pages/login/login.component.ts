@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Evaluation } from 'src/app/model/evaluation';
+import { Personne } from 'src/app/model/personne';
 import { Question } from 'src/app/model/question';
 import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
@@ -14,6 +16,7 @@ import { RoleService } from 'src/app/services/role.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  credentials = {username: '', password:''}
   users!: any[];
   roles!: any[];
   questions!: any[];
@@ -24,9 +27,15 @@ export class LoginComponent implements OnInit {
   evaluation: Evaluation = new Evaluation();
   constructor(private personneService: PersonneService, private questionService: QuestionService,
     private evaluationService: EvaluationService,private roleService:RoleService,
-    private coursService:CoursService,private appService:AppService) {}
+    private coursService:CoursService,private appService:AppService,private router:Router) {}
 
   ngOnInit() {
+    let userId=sessionStorage.getItem('UserId');
+    let name=sessionStorage.getItem("Username");
+    if(!userId){
+      alert("ErreurID")
+      return;
+    }
     this.findAllPersonne();
     this.findAllQuestions();
     this.findAllEvaluations();
@@ -104,4 +113,7 @@ export class LoginComponent implements OnInit {
        return true;
      }
    }
+   //A CHANGER LOGIN 
+
+
 }

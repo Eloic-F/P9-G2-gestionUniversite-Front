@@ -23,6 +23,12 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
 
   ngOnInit() {
+    let userId=sessionStorage.getItem('UserId');
+    let name=sessionStorage.getItem("Username");
+    if(!userId){
+      alert("ErreurID")
+      return;
+    }
 
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
