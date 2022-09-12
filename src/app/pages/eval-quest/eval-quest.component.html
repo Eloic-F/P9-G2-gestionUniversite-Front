@@ -70,7 +70,8 @@
                 <th scope="col">Contenu évaluation</th>
                 <th scope="col">Cours associé</th>
                 <th scope="col">Enseignant</th>
-                <th scope="col">Action</th>
+                <th scope="col">Editer</th>
+                <th scope="col">Supprimer</th>
               </tr>
             </thead>
             <tbody>
@@ -83,6 +84,7 @@
                 <td>{{e.commentaire}}</td>
                 <td>{{courses[i].libelleCours}}</td>
                 <td>{{personnes[i].prenom}} {{personnes[i].nom}}</td>
+                <td><button (click)="editEvaluation(e)" class="btn btn-danger">Editer</button></td>
                 <td><button (click)="deleteEvaluation(e.idEvaluation)" class="btn btn-danger">Supprimer</button></td>
               </tr>
             </tbody>

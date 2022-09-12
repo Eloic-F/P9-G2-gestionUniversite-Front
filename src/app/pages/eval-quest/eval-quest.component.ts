@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Evaluation } from 'src/app/model/evaluation';
 import { Question } from 'src/app/model/question';
 import { CoursService } from 'src/app/services/cours.service';
@@ -25,7 +26,8 @@ export class EvalQuestComponent implements OnInit {
     private roleService:RoleService,
     private questionService: QuestionService,
     private evaluationService: EvaluationService,
-    private coursService:CoursService) { }
+    private coursService:CoursService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.findAllPersonne();
@@ -84,6 +86,15 @@ export class EvalQuestComponent implements OnInit {
     this.evaluationService.deleteEvaluation(id).subscribe(() => {
       this.findAllEvaluations();
     });
+  }
+
+  public editEvaluation(evaluation:Evaluation){
+    // step 2 vider la variable
+    localStorage.removeItem("editEvalId");
+    // step 1
+    localStorage.setItem("editEvalId",evaluation.idEvaluation.toString());
+    // step 3
+    this.router.navigate(['/edit-evaluation',evaluation.idEvaluation]);
   }
 
   // Cours
