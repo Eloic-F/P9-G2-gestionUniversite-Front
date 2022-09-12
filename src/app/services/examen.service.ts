@@ -21,4 +21,9 @@ export class ExamenService {
   public delete(id:number):Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/"+id); // http://localhost:7070/utilisateurs/1
   }
+
+  public update(examen:any):Observable<any>{
+    var examenParse=JSON.parse(examen);
+    return this.httpClient.put(this.baseUrl+'/'+examenParse.idUtilisateur,examenParse);
+  }
 }

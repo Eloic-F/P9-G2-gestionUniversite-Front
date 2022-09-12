@@ -16,6 +16,10 @@ export class CoursService {
   public findAll() : Observable<any>{
     return this.httpClient.get(this.baseUrl);
   }
+
+  public findOne(id:number):Observable<any>{
+    return this.httpClient.get(this.baseUrl+"/"+id)
+  }
   
 
   public save(image:File,cours:Cours):Observable<any>{
@@ -31,6 +35,11 @@ export class CoursService {
     formData.append('questions',String(cours.questions));
     const requete= new HttpRequest('POST',this.baseUrl,formData,{reportProgress:true,responseType:'text'});
     return this.httpClient.request(requete);
+  }
+
+  public update(cours:any):Observable<any>{
+    var coursParse=JSON.parse(cours);
+    return this.httpClient.put(this.baseUrl+'/'+coursParse.idUtilisateur,coursParse);
   }
   
 
