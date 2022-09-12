@@ -29,6 +29,7 @@ import { UniversiteService } from './services/universite.service';
 import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditEvaluationComponent } from './pages/edit-evaluation/edit-evaluation.component';
 
 
 
@@ -48,7 +49,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     ProfilComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditEvaluationComponent
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,

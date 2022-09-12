@@ -8,6 +8,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
 import { EvalQuestComponent } from 'src/app/pages/eval-quest/eval-quest.component';
 import { ProfilComponent } from 'src/app/pages/profil/profil.component';
+import { EditEvaluationComponent } from 'src/app/pages/edit-evaluation/edit-evaluation.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -17,5 +18,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'contacts',          component: LoginComponent },
     { path: 'evaluation-question',  component:EvalQuestComponent},
-    { path: 'mon-profil',  component:ProfilComponent}
+    { path: 'mon-profil',  component:ProfilComponent},
+    { path: 'edit-evaluation/:id',  component:EditEvaluationComponent}
 ];

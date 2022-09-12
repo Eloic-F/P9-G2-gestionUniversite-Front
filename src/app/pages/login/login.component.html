@@ -14,28 +14,32 @@
           <h3 class="mb-0">Liste des enseignants</h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Numéro de téléphone</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let p of personnes">
-                <th scope="row">
-                  <div class="media align-items-center">
-                    {{p.nom}}
-                  </div>
-                </th>
-                <td>{{p.prenom}}</td>
-                <td><a href = "mailto: {{p.email}}"><i class="ni ni-email-83"></i></a></td>
-                <td><a href="tel:+0{{p.numeroTel}}">Appeler</a></td>
-              </tr>
-            </tbody>
-          </table>
+          <div *ngFor="let p of personnes">
+            <div *ngFor="let r of p.roles">
+              <div *ngIf="r.idRole == 2">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prenom</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Numéro de téléphone</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        {{p.nom}}
+                      </div>
+                    </th>
+                    <td>{{p.prenom}}</td>
+                    <td><a href="mailto: {{p.email}}"><i class="ni ni-email-83"></i></a></td>
+                    <td><a href="tel:+0{{p.numeroTel}}">Appeler</a></td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-footer py-4">
           <nav aria-label="...">
