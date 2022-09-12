@@ -12,17 +12,17 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <select class="custom-select" name="cours" id="" [(ngModel)]="evaluation.cours">
-            <option selected>Sélectionner un cours</option>
-            <option [ngValue]="c" *ngFor="let c of courses">{{c.libelleCours}}</option>
+          <label for="">Sélectionner un enseignant</label>
+          <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
+            <option [ngValue]="p.id" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
           </select>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
-            <option selected>Sélectionner un enseignant</option>
-            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
+          <label for="">Sélectionner un cours</label>
+          <select class="custom-select" name="cours" id="" [(ngModel)]="evaluation.cours">
+            <option [ngValue]="c.idCours" *ngFor="let c of courses">{{c.libelleCours}}</option>
           </select>
         </div>
       </div>
@@ -123,18 +123,19 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <div class="form-group">
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Entrer une catégorie"
-              name="categorie" id="" [(ngModel)]="question.categorie">
-          </div>
+          <label for="">Sélectionner un enseignant</label>
+          <select class="custom-select" name="personne" id="" [(ngModel)]="question.personne">
+            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
+          </select>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <select class="custom-select" name="personne" id="" [(ngModel)]="question.personne">
-            <option selected>Sélectionner un enseignant</option>
-            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
-          </select>
+          <div class="form-group">
+            <label for="">Catégorie</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Entrer une catégorie"
+              name="categorie" id="" [(ngModel)]="question.categorie">
+          </div>
         </div>
       </div>
     </div>
