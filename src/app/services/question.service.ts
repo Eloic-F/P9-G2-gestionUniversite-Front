@@ -22,4 +22,8 @@ export class QuestionService {
   public delete(id:number):Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/"+id); // http://localhost:7070/utilisateurs/1
   }
+  public update(question:any):Observable<any>{
+    var questionParse=JSON.parse(question);
+    return this.httpClient.put(this.baseUrl+'/'+questionParse.idUtilisateur,questionParse);
+  }
 }

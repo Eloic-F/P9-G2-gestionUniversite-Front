@@ -83,17 +83,20 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="depot()">
+              
               <tr *ngFor='let c of cours'>
+                <form (ngSubmit)="depot(c.idCours)">
+                  <form [formGroup]="coursForm">
                 <td>{{c.libelleCours}}</td>
                 <td>                  <span class="badge badge-dot mr-4">
                   <i class="bg-warning"></i> pending
                 </span></td>
                 <td><label >Image</label>
-                  <input type="file" (change)="selectFile($event)"name='image'></td>
-                
+                  <input type="file" (change)="selectFile($event)"name='image'[(ngModel)]=cours.image formControlName="image"></td>
+                </form>
+              </form>
               </tr>
-            </form>
+            
              
             </tbody>
           </table>
@@ -145,17 +148,18 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="correction()">
+              <form (ngSubmit)="correct()">
              <tr *ngFor="let e of examens">
+              <form [formGroup]="examenForm">
              <td>{{e.typeExamen}}</td>
              <td>                  <span class="badge badge-dot mr-4">
               <i class="bg-warning"></i> pending
             </span></td>
             <td>{{e.personne.classe}}</td>
             <td><label >Pdf</label>
-              <input type="file" (change)="selectFile($event)"name='correction'></td>
-            <td><input type="number"[(ngModel)]="examen.note" name="note"></td>
-          
+              <input type="file" (change)="selectFile($event)"name='correction' formControlName="correction"></td>
+            <td><input type="number"[(ngModel)]="examen.note" name="note" formControlName="note"></td>
+          </form>
           </tr>
         </form>
             </tbody>
@@ -262,17 +266,19 @@
               </tr>
             </thead>
             <tbody>
-              <!--<form [formGroup]="editForm">-->
+             
              <tr *ngFor="let q of questions">
+              <form [formGroup]="questionForm">
               <td>{{q.personne.nom}}</td>
               <td>{{q.question}}</td>
               <td>                  <span class="badge badge-dot mr-4">
                 <i class="bg-warning"></i> pending
               </span></td>
-              <td><input type="text" [(ngModel)]="question.question" formControlName="question"></td>
+              <td><input type="text" [(ngModel)]="question.question" formControlName="questions"></td>
               <td><button (click)="reponse()">Envoyer</button></td>
+            </form>
              </tr>
-            <!--</form>-->
+           
             </tbody>
           </table>
         </div>
