@@ -11,14 +11,14 @@ import { PersonneService } from 'src/app/services/personne.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  credentials = {username: '', password:''}
+  credentials = {username:'', password:''}
   constructor(private appService:AppService,private httplClient:HttpClient,private router:Router,private personneService:PersonneService) { }
   login(){
     this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/mon-profil")});
     var personne:Personne = new Personne();
     this.personneService.findOneByUsername(this.credentials.username).subscribe(data=>{personne=data});
     sessionStorage.setItem("UserId",personne.id.toString());
-    sessionStorage.setItem("Username",personne.username.toString())// A afficher l'username dans la page, pour la fonctionnalité.
+   // sessionStorage.setItem("Username",personne.username.toString())// A afficher l'username dans la page, pour la fonctionnalité.
     return false;
   }
 
