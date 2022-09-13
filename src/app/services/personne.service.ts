@@ -59,8 +59,6 @@ export class PersonneService {
     return this.httpClient.get<any>(`${this.baseUrl}/secu/${username}`);
   }
 
-
-
   public getPersonne(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
   }

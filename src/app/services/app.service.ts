@@ -23,9 +23,11 @@ export class AppService {
       );
       this.httpClient.get(environment.apiBaseUrl+'login/user',{headers:headers}).subscribe(response =>{
         this.responseAll = response;
+        console.log("connexion="+this.responseAll);
         if(this.responseAll['username']){
           this.authenticated = true;
           for(let i=0;i<this.responseAll['roles'].length;i++){
+            console.log("id===="+this.responseAll['roles'][i]['idRole']);
             if(this.responseAll['roles'][i]['idRole']==1){
               this.isAdmin = true;
             }

@@ -39,7 +39,6 @@ export class UserProfileComponent implements OnInit {
   section : Section = new Section();
   formation : Formation = new Formation();
 
-
   constructor(private compteService:CompteService,
               private personneService:PersonneService,
               private roleService:RoleService,
@@ -73,6 +72,7 @@ export class UserProfileComponent implements OnInit {
   findAllAcademie(){
     this.academieService.findAll().subscribe((data: any[]) => {this.academies = data;});
   }
+
   findAllUniversite(){
     this.universiteService.findAll().subscribe((data: any[]) => {this.universites = data;});
   }
@@ -128,7 +128,6 @@ export class UserProfileComponent implements OnInit {
         this.formation = new Formation(); //vider formulaire
       }
     )
-
   }
   delete(id:number){
     this.compteService.delete(id).subscribe(()=>{this.findAllCompte()});
@@ -143,4 +142,6 @@ export class UserProfileComponent implements OnInit {
     // localhost:4200/editUser/3
     this.router.navigate(['/editUser',user.id]);
     }
-}
+   }
+   
+
