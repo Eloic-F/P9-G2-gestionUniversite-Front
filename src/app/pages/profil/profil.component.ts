@@ -84,7 +84,7 @@ export class ProfilComponent implements OnInit {
   findAllFormation(){
     this.formationService.findAll().subscribe((data: any[]) => {this.formations = data;});
   }
-  //
+  /*
   authenticated(){
     return  this.appService.authenticated; // false
    }
@@ -95,5 +95,5 @@ export class ProfilComponent implements OnInit {
      }else{
        return true;
      }
-   }
+   }*/
 }
