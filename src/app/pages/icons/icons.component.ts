@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { find } from 'rxjs';
+import { Cours } from 'src/app/model/cours';
 import { Examen } from 'src/app/model/examen';
 import { Personne } from 'src/app/model/personne';
 import { Question } from 'src/app/model/question';
+import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { ExamenService } from 'src/app/services/examen.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -20,8 +22,14 @@ export interface IHash{
 })
 
 export class IconsComponent implements OnInit {
-  editForm:FormGroup
+  userId= sessionStorage.getItem("UserId");
+  editForm:FormGroup;
+  coursForm:FormGroup;
+  examentForm:FormGroup;
+  questionForm:FormGroup;
   utilisateur:Personne=new Personne;
+  selectedFiles:FileList;
+  currentFileUpload:File;
   cours!:any[];
   questions!:any[];
   examens!:any[];
@@ -29,13 +37,13 @@ export class IconsComponent implements OnInit {
   examen:Examen=new Examen;
   selectedFile:FileList;
   public copy: string;
-  constructor(private coursService:CoursService,private examenService:ExamenService,private questionService:QuestionService,private personneService:PersonneService,
-    private formBuilder:FormBuilder) { }
+  constructor(private coursService:CoursService,private examenService:ExamenService,
+    private questionService:QuestionService,private personneService:PersonneService,
+    private formBuilder:FormBuilder, private appService:AppService) { }
 
   ngOnInit(): void {
-    let userId=sessionStorage.getItem('UserId');
     let name=sessionStorage.getItem("Username");
-    if(!userId){
+    if(!this.userId){
       alert("ErreurID")
       return;
     }
@@ -43,11 +51,23 @@ export class IconsComponent implements OnInit {
       id:[],
       username:[],
     })
-    this.personneService.findOne(+userId).subscribe(data => {this.editForm.setValue(data)})
-    this.ActualUser(+userId);
-    this.findAllCours(+userId);
-    this.findAllExamen(+userId);
-    this.findAllQuestion(+userId);
+    this.coursForm=this.formBuilder.group({
+      image:[,Validators.required],
+    })
+    this.examentForm=this.formBuilder.group({
+      note:[,Validators.required],
+      correction:[,Validators.required]
+      
+    })
+    this.questionForm=this.formBuilder.group({
+      questions:[,Validators.required]
+    })
+
+    this.personneService.findOne(+this.userId).subscribe(data => {this.editForm.setValue(data)})
+    this.ActualUser(+this.userId);
+    this.findAllCours(+this.userId);
+    this.findAllExamen(+this.userId);
+    this.findAllQuestion(+this.userId);
 
  
     
@@ -72,16 +92,40 @@ export class IconsComponent implements OnInit {
     this.selectedFile = event.target.files;
   }
   reponse(){
+    var questionJson=JSON.stringify(this.questionForm.value);
+    this.questionService.update(questionJson).subscribe(()=>{
+      this.ngOnInit
+    })
+    
 
   }
 
-  correction(){
+  correct(){
+    var examenJSON=JSON.stringify(this.examentForm.value);
+    this.examenService.update(examenJSON).subscribe(()=>{this.ngOnInit})
+  }
+  depot(id:number){
+    this.currentFileUpload = this.selectedFiles.item(0);
+    let crs:Cours=new Cours();
+    this.coursService.findOne(id).subscribe(data=>(crs=data));
+    var coursJson=JSON.stringify(this.coursForm.value)
+    this.coursService.update(coursJson).subscribe(()=>{
+     this.ngOnInit;
+    this.selectedFile=undefined;
+    })
+
+
+
 
   }
-  depot(){
 
+//
+authorities(){
+  if(this.appService.isAdmin == true || this.appService.isEnseignant ==true){
+    return false;
+  }else{
+    return true;
   }
-
-
+}
   
 }
