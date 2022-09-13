@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cours } from 'src/app/model/cours';
 import { Question } from 'src/app/model/question';
+import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { QuestionService } from 'src/app/services/question.service';
 
@@ -16,7 +17,8 @@ export class TablesComponent implements OnInit {
   questions!: any[]; 
   question : Question = new Question();
  
-  constructor(private coursService:CoursService,private questionService:QuestionService) { }
+  constructor(private coursService:CoursService,private questionService:QuestionService,
+    private appService:AppService) { }
 
   ngOnInit(): void {
     let userId=sessionStorage.getItem('UserId');
@@ -48,6 +50,15 @@ export class TablesComponent implements OnInit {
     )
     
     }
+
+    //
+  authorities(){
+    if(this.appService.isAdmin == true || this.appService.isEtudiant ==true){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
  }
   

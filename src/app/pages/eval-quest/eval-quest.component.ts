@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Evaluation } from 'src/app/model/evaluation';
 import { Question } from 'src/app/model/question';
+import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { EvaluationService } from 'src/app/services/evaluation.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -27,7 +28,8 @@ export class EvalQuestComponent implements OnInit {
     private questionService: QuestionService,
     private evaluationService: EvaluationService,
     private coursService:CoursService,
-    private router:Router) { }
+    private router:Router,
+    private appService:AppService) { }
 
   ngOnInit(): void {
     this.findAllPersonne();
@@ -102,6 +104,15 @@ export class EvalQuestComponent implements OnInit {
     this.coursService.findAll().subscribe((data) => {
       this.courses = data;
     });
+  }
+
+  //
+  authorities(){
+    if(this.appService.isAdmin == true || this.appService.isEtudiant ==true){
+      return false;
+    }else{
+      return true;
+    }
   }
 
 }

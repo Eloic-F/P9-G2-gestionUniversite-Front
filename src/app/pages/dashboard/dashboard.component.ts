@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { AppService } from 'src/app/services/app.service';
 
 // core components
 import {
@@ -21,6 +22,9 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
+  constructor(
+    private appService:AppService) { }
 
   ngOnInit() {
     let userId=sessionStorage.getItem('UserId');
@@ -61,6 +65,13 @@ export class DashboardComponent implements OnInit {
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
+  }
+  authorities(){
+    if(this.appService.isAdmin){
+      return false;
+    }else{
+      return true;
+    }
   }
 
 }
