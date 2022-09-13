@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   question: Question = new Question();
   evaluation: Evaluation = new Evaluation();
-  constructor(private personneService: PersonneService, private roleService:RoleService) {}
+  constructor(private personneService: PersonneService, private roleService:RoleService,
+    private appService:AppService) {}
 
   ngOnInit() {
     let userId=sessionStorage.getItem('UserId');
@@ -46,5 +47,14 @@ export class LoginComponent implements OnInit {
     this.roleService.findAll().subscribe(data => {
       this.roles=data;
     })
+  }
+
+  //
+  authorities(){
+    if(this.appService.isAdmin == true || this.appService.isEtudiant ==true){
+      return false;
+    }else{
+      return true;
+    }
   }
 }
