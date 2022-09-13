@@ -18,9 +18,9 @@ export class UserProfileComponent implements OnInit {
   compte : Compte = new Compte();
   personne : Personne = new Personne();
 
-
   constructor(private compteService:CompteService,private personneService:PersonneService,private roleService:RoleService) { }
 
+  
   ngOnInit(): void {
     this.findAllCompte();
     this.findAllPersonne();
