@@ -4,7 +4,12 @@
   <!-- Top navbar -->
   <app-navbar></app-navbar>
   <!-- Pages -->
-  <router-outlet></router-outlet>
+  <div [hidden]="!authenticated()">
+    <router-outlet></router-outlet>
+  </div>
+  <div [hidden]="authenticated()">
+    <p>Connectez-vous pour afficher le contenu de la page</p>
+  </div>
   <div class="container-fluid">
     <app-footer></app-footer>
   </div>

@@ -28,6 +28,11 @@ import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
 import { Observable } from 'rxjs';
 import { AppService } from './services/app.service';
+import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
+import { ProfilComponent } from './pages/profil/profil.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditEvaluationComponent } from './pages/edit-evaluation/edit-evaluation.component';
+
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -37,11 +42,11 @@ export class XhrInterceptor implements HttpInterceptor{
     return next.handle(xhr);
   }
 }
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
@@ -52,7 +57,10 @@ export class XhrInterceptor implements HttpInterceptor{
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ProfilComponent,
+    EditUserComponent,
+    EditEvaluationComponent
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,

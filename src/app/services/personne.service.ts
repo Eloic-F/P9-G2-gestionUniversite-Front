@@ -24,8 +24,27 @@ export class PersonneService {
   public findAllCours(idPersonne:number):Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}/"cours/${idPersonne}`);
   }
+  public findAllRoles(idPersonne:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"roles/${idPersonne}`);
+  }
+  
+  public findAllUniversites(idUniversite:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"universites/${idUniversite}`);
+  }
 
 
+  public findAllAcademies(idAcademie:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"academies/${idAcademie}`);
+  }
+  public findAllCentreDeRecherches(idCentreDeRecherche:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"centreDeRecherches/${idCentreDeRecherche}`);
+  }
+  public findAllSections(idSection:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"sections/${idSection}`);
+  }
+  public findAllFormations(idFormation:number):Observable<void>{
+    return this.httpClient.get<any>(`${this.baseUrl}/"formations/${idFormation}`);
+  }
   public addPersonne(personne:Personne):Observable<any>{
     return this.httpClient.post<any>(`${this.baseUrl}`, personne);
   }
@@ -41,6 +60,14 @@ export class PersonneService {
   }
 
 
+
+  public getPersonne(idPersonne:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${idPersonne}`);
+  }
+  public updatePersonne(user:any):Observable<any>{
+    var userParse = JSON.parse(user);
+    return this.httpClient.put(this.baseUrl+'/'+userParse.idPersonne,userParse);
+  }
 
 
   /*public updatePersonne(personne:Personne):Observable<any>{

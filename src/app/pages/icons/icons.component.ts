@@ -5,6 +5,7 @@ import { Cours } from 'src/app/model/cours';
 import { Examen } from 'src/app/model/examen';
 import { Personne } from 'src/app/model/personne';
 import { Question } from 'src/app/model/question';
+import { AppService } from 'src/app/services/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { ExamenService } from 'src/app/services/examen.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -36,8 +37,9 @@ export class IconsComponent implements OnInit {
   examen:Examen=new Examen;
   selectedFile:FileList;
   public copy: string;
-  constructor(private coursService:CoursService,private examenService:ExamenService,private questionService:QuestionService,private personneService:PersonneService,
-    private formBuilder:FormBuilder) { }
+  constructor(private coursService:CoursService,private examenService:ExamenService,
+    private questionService:QuestionService,private personneService:PersonneService,
+    private formBuilder:FormBuilder, private appService:AppService) { }
 
   ngOnInit(): void {
     let name=sessionStorage.getItem("Username");
@@ -117,6 +119,13 @@ export class IconsComponent implements OnInit {
 
   }
 
-
+//
+authorities(){
+  if(this.appService.isAdmin == true || this.appService.isEnseignant ==true){
+    return false;
+  }else{
+    return true;
+  }
+}
   
 }
