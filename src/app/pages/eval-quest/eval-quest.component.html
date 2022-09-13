@@ -14,7 +14,11 @@
         <div class="form-group">
           <label for="">Sélectionner un enseignant</label>
           <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
-            <option [ngValue]="p.id" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
+            <ng-container *ngFor="let p of personnes">
+              <ng-container *ngFor="let r of p.roles">
+                <option [ngValue]="p.id" *ngIf="r.idRole==2">{{p.nom}} {{p.prenom}}</option>
+              </ng-container>
+            </ng-container>
           </select>
         </div>
       </div>
@@ -127,7 +131,11 @@
         <div class="form-group">
           <label for="">Sélectionner un enseignant</label>
           <select class="custom-select" name="personne" id="" [(ngModel)]="question.personne">
-            <option [ngValue]="p" *ngFor="let p of personnes">{{p.nom}} {{p.prenom}}</option>
+            <ng-container *ngFor="let p of personnes">
+              <ng-container *ngFor="let r of p.roles">
+                <option [ngValue]="p.id" *ngIf="r.idRole==2">{{p.nom}} {{p.prenom}}</option>
+              </ng-container>
+            </ng-container>
           </select>
         </div>
       </div>
