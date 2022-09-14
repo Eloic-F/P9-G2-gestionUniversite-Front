@@ -9,6 +9,7 @@ import { LoginComponent } from 'src/app/pages/login/login.component';
 import { EvalQuestComponent } from 'src/app/pages/eval-quest/eval-quest.component';
 import { ProfilComponent } from 'src/app/pages/profil/profil.component';
 import { EditEvaluationComponent } from 'src/app/pages/edit-evaluation/edit-evaluation.component';
+import { EditUserComponent } from 'src/app/edit-user/edit-user.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -19,5 +20,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'contacts',          component: LoginComponent },
     { path: 'evaluation-question',  component:EvalQuestComponent},
     { path: 'mon-profil',  component:ProfilComponent},
-    { path: 'edit-evaluation/:id',  component:EditEvaluationComponent}
+    { path: 'edit-evaluation/:id',  component:EditEvaluationComponent},
+    { path: 'editUser/:id', component: EditUserComponent}
 ];

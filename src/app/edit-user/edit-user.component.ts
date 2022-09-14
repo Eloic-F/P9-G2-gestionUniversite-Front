@@ -18,11 +18,11 @@ import { PersonneService } from '../services/personne.service';
   let userId = localStorage.getItem("editUserId");
   if(!userId){
     alert("Invalid Action!!!");
-     this.router.navigate(['/personnes'+userId]);
+     this.router.navigate(['/espace-compte']);
   return;
   }
   this.editForm = this.formBuilder.group({
-  id:['',Validators.required],
+  id:[],
   nom: ['',Validators.required],
   prenom:['',Validators.required],
   dateNaissance:[,Validators.required],
@@ -36,6 +36,6 @@ import { PersonneService } from '../services/personne.service';
   }
   updatePersonne(){
     var userJson = JSON.stringify(this.editForm.value);
-  this.personneService.updatePersonne(userJson).subscribe(()=>{this.router.navigate(['/personnes'])});
-  }e
+  this.personneService.updatePersonne(userJson).subscribe(()=>{this.router.navigate(['/espace-compte'])});
+  }
 }

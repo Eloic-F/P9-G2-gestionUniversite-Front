@@ -31,13 +31,10 @@ const routes: Routes =[
         loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
       }
     ]
-  }, {
-    path: 'personne', // localhost:4200/utilisateur
-    component : UserProfileComponent
-    },{
-    path: 'editUser/:id', // localhost:4200/editUser/4
-    component: EditUserComponent
-    }
+  },{
+    path: '**',
+    redirectTo: 'dashboard'
+  }
 ];
 
 @NgModule({
