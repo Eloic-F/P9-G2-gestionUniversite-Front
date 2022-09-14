@@ -168,6 +168,7 @@
                 <th scope="col">Mot de passe</th>
                 <!--<th scope="col">Roles</th>-->
                 <th scope="col">Editer</th>
+                <th scope="col">Validation</th>
                 <th scope="col">Supprimer</th>
 
               </tr>
@@ -186,6 +187,7 @@
                 <td>{{personnes[i].password}}</td>
                 <!-- <td>{{roles[i].libelleRole}}</td> -->
                 <td><button class="btn pull-right" (click)="editUser(p)">Modifier</button></td>
+                <td><button class="btn pull-right" (click)="editCompte(p)">Validation</button></td>
                 <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Supprimer le compte ?</button></td>
 
               </tr>

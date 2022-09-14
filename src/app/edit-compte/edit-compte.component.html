@@ -1,0 +1,21 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div>
+      <h1>Mise à jour d'un utilisateur</h1>
+      <form [formGroup]="editForm">
+          <table>
+               <tr>
+                   <td>Statut</td>
+                   <td><input type="text" [(ngModel)]="compte.statut" formControlName="statut"  name="Validation" disabled/></td>
+               </tr>
+               <tr>
+                  <td colspan="2"><button (click)="updatePersonne()">Valider la candidature</button></td>
+               </tr>
+          </table>
+      </form>
+  </div>
