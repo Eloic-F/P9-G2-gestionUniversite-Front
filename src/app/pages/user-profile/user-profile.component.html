@@ -1,5 +1,10 @@
-<br><br><br>
-
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<!-- Page content -->
 <div class="card" style="width: 80%;">
   <div class="card-body">
     <h1 class="card-title">Ajouter un compte</h1>
@@ -164,8 +169,9 @@
         <th scope="col">Numero de téléphone</th>
         <th scope="col">Identifiant</th>
         <th scope="col">Mot de passe</th>
-        <th scope="col">Roles</th>
-        <th scope="col">Action</th>
+        <!--<th scope="col">Roles</th>-->
+        <th scope="col">Editer</th>
+        <th scope="col">Supprimer</th>
 
       </tr>
     </thead>
@@ -182,6 +188,7 @@
           <td>{{personnes[i].username}}</td>
           <td>{{personnes[i].password}}</td>
          <!-- <td>{{roles[i].libelleRole}}</td> -->
+            <td><button (click)="editUser(p)">Modifier</button></td>
           <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Supprimer le compte ?</button></td>
 
       </tr>
