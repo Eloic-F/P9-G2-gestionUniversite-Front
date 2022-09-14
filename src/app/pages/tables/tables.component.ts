@@ -16,6 +16,9 @@ import { UEService } from 'src/app/services/ue.service';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
+selectFile($event: any) {
+throw new Error('Method not implemented.');
+}
 
   courss!: any[]; 
   cours : Cours = new Cours();
@@ -27,6 +30,8 @@ export class TablesComponent implements OnInit {
   ue : UE = new UE();
   formations!: any[]; 
   formation : Formation = new Formation();
+  selectedFiles:FileList;
+  currentFileUpload:File;
  
   constructor(private coursService:CoursService,private questionService:QuestionService,private personneService:PersonneService, 
     private ueService:UEService, private formationService:FormationService) { }
@@ -56,7 +61,7 @@ export class TablesComponent implements OnInit {
     this.formationService.findAll().subscribe((data: any[]) => {this.formations = data;});
   }
 
-  save(){
+  saveQuestion(){
     this.questionService.save(this.question).subscribe(
       ()=>{
         this.findAllQuestion(); //update list
@@ -65,7 +70,20 @@ export class TablesComponent implements OnInit {
     )
     
     }
+    selectFile1(event:any){
+      this.selectedFiles = event.target.files;
+    }
 
+    saveCours(){
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.coursService.save(this.currentFileUpload,this.cours).subscribe(
+        ()=>{
+          this.findAllCours(); //update list
+          this.cours = new Cours(); //vider formulaire
+          this.selectedFiles = undefined;
+        }
+      )
+    }
  }
   
 
