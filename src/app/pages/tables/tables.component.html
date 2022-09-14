@@ -30,10 +30,57 @@
     </div>
   </div>
 </div>
+
+
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
-  
+  <!-- Formulaire cours -->
+<div class="row">
+  <div class="col">
+    <div class="card shadow">
+      <div class="card-header border-0">
+        <h3 class="mb-0">Depot de cours en ligne</h3><!--Placeholder-->
+      </div>
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+            <form (ngSubmit)="saveCours()">
+                  <tr>
+                      <td>Nom du cours</td>
+                      <td><input type="text" [(ngModel)]="cours.libelleCours" name="libelleCours"/></td>
+                  </tr>
+                  <tr>
+                      <td>Duree du Cours (en heure)</td>
+                      <td><input type="text" [(ngModel)]="cours.dureeCours" name="dureeCours"/></td>
+                  </tr>
+                  <tr>
+                    <td>date du Cours</td>
+                    <td><input type="text" [(ngModel)]="cours.dateCours" name="dateCours"/></td>
+                 </tr>
+                 <tr>
+                 <td>Image</td>
+                    <td><input type="file" (change)="selectFile1($event)" name="image"></td>
+                 </tr>
+
+                  <tr>
+                      <td>Formation</td>
+                      <td>
+                          <select multiple name="formations" [(ngModel)]="cours.formation">
+                              <option *ngFor="let f of formations" [ngValue]="f">
+                                  {{f.titreFormation}}
+                              </option>
+                          </select>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"><button>Ajouter</button></td>
+                  </tr>
+              
+          </form>
+           
+          
+        </table>
+      </div>
   <div class="row">
     <div class="col">
       <div class="card shadow">
@@ -64,7 +111,7 @@
                     <div class="card-header border-0">
                       <h3 class="mb-0">Questions de cours</h3>
                     </div>
-                    <form (ngSubmit)="save()">
+                    <form (ngSubmit)="saveQuestion()">
                         <div class="row">
                             <div class="col-md-6">
                                 <input matInput placeholder="categorie" type="text" [(ngModel)]="question.categorie" name="categorie">
