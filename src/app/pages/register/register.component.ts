@@ -16,7 +16,7 @@ export class RegisterComponent {
   login(){
     this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/mon-profil")});
     var personne:Personne = new Personne();
-    this.personneService.findOneByUsername(this.credentials.username).subscribe(data=>{personne=data});
+    this.personneService.findOneByUsername(this.credentials.username).subscribe((data:any)=>{personne=data});
     sessionStorage.setItem("UserId",personne.id.toString());
    // sessionStorage.setItem("Username",personne.username.toString())// A afficher l'username dans la page, pour la fonctionnalité.
     return false;

@@ -32,6 +32,7 @@ import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditEvaluationComponent } from './pages/edit-evaluation/edit-evaluation.component';
+import { StatsService } from './services/stats.service';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor{
@@ -64,7 +65,7 @@ export class XhrInterceptor implements HttpInterceptor{
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,
-    FormationService,SectionService,UniversiteService,AppService,{provide:HTTP_INTERCEPTORS,useClass:XhrInterceptor,multi:true}],
+    FormationService,SectionService,UniversiteService,AppService,StatsService,{provide:HTTP_INTERCEPTORS,useClass:XhrInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
