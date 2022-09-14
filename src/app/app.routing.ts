@@ -11,7 +11,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'authentification',
     pathMatch: 'full',
   }, {
     path: '',
@@ -33,7 +33,7 @@ const routes: Routes =[
     ]
   },{
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'authentification'
   }
 ];
 
