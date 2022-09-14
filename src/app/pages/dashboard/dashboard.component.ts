@@ -67,13 +67,15 @@ export class DashboardComponent implements OnInit {
       this.nbrEval(coursId);
       this.moyi.push(this.moy);
       this.quest.push(this.nbQuestion);
-      this.tauxR.push(this.tauxReussite);
+      this.tauxR.push(this.tauxReussite*100);
       this.nombreEval.push(this.nbrEvaluation)
     })
     
     this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [0, 20, 5, 25, 10, 30, 15, 40, 40]
+      [this.moyi],
+      [this.quest],
+      [this.tauxR],
+      [this.nombreEval]
     ];
     this.data = this.datasets[0];
 
@@ -85,8 +87,8 @@ export class DashboardComponent implements OnInit {
 
     var ordersChart = new Chart(chartOrders, {
       type: 'bar',
-      options: chartExample2.options,
-      data: chartExample2.data
+      options: chartExample1.options,
+      data: chartExample1.data
     });
 
     var chartSales = document.getElementById('chart-sales');

@@ -210,10 +210,10 @@
               </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let e of examens">
+            <tr *ngFor="let e of examens;let c of coursi">
               <td>{{e.typeExamen}}</td>
               <td>{{e.personne.cours}}</td>
-              <td>{{e.personne.classe}}</td>
+              <td>{{c}}</td>
               <td><button>Retrait pdf</button></td>
             </tr>
             </tbody>

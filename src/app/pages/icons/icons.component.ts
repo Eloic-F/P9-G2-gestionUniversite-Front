@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { find } from 'rxjs';
+import { Classe } from 'src/app/model/classe';
 import { Cours } from 'src/app/model/cours';
 import { Examen } from 'src/app/model/examen';
 import { Personne } from 'src/app/model/personne';
@@ -32,8 +33,10 @@ export class IconsComponent implements OnInit {
   currentFileUpload:File;
   cours!:any[];
   questions!:any[];
-  examens!:any[];
+  examens!:Examen[];
+  SafeCours:Cours[];
   question:IHash={};
+  coursi:Cours[];
   examen:Examen=new Examen;
   selectedFile:FileList;
   public copy: string;
@@ -68,6 +71,12 @@ export class IconsComponent implements OnInit {
     this.findAllCours(+this.userId);
     this.findAllExamen(+this.userId);
     this.findAllQuestion(+this.userId);
+    this.examens.forEach(function(value){
+      var coura!:any;
+      coura=value.personne.courses;
+      this.coursi.push(coura);
+    })
+    
 
  
     
