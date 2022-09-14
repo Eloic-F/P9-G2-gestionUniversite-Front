@@ -143,4 +143,15 @@ export class UserProfileComponent implements OnInit {
     // localhost:4200/editUser/3
     this.router.navigate(['/editUser',user.id]);
     }
+
+   editCompte(compte:Compte){
+    // Step 2
+    localStorage.removeItem("editCompteIdCompte");
+    // Step 1
+    localStorage.setItem("editCompteIdCompte",compte.idCompte.toString());
+    // Step 3
+    // localhost:4200/editUser/3
+    this.router.navigate(['/editCompte',compte.idCompte]);
+    }
+
 }

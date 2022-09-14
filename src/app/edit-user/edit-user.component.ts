@@ -10,6 +10,7 @@ import { PersonneService } from '../services/personne.service';
   styleUrls: ['./edit-user.component.scss']
   })
   export class EditUserComponent implements OnInit {
+ 
   editForm!: FormGroup;
   personne:Personne = new Personne();
   constructor(private router:Router,private personneService:PersonneService,
