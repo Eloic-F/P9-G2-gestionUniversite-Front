@@ -16,7 +16,7 @@
           <select class="custom-select" name="personne" id="" [(ngModel)]="evaluation.personne">
             <ng-container *ngFor="let p of personnes">
               <ng-container *ngFor="let r of p.roles">
-                <option [ngValue]="p.id" *ngIf="r.idRole==2">{{p.nom}} {{p.prenom}}</option>
+                <option [ngValue]="p" *ngIf="r.idRole==2">{{p.nom}} {{p.prenom}}</option>
               </ng-container>
             </ng-container>
           </select>
@@ -26,7 +26,7 @@
         <div class="form-group">
           <label for="">Sélectionner un cours</label>
           <select class="custom-select" name="cours" id="" [(ngModel)]="evaluation.cours">
-            <option [ngValue]="c.idCours" *ngFor="let c of courses">{{c.libelleCours}}</option>
+            <option [ngValue]="c" *ngFor="let c of courses">{{c.libelleCours}}</option>
           </select>
         </div>
       </div>

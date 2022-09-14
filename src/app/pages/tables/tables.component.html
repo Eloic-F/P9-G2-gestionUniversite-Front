@@ -1,91 +1,74 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
-      <!-- Card stats -->
-      <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                 
-                    <h5 class="card-title text-uppercase text-muted mb-0"><td>Nom Etudiant</td></h5>
-                    <h5 class="card-title text-uppercase text-muted mb-0"><td>Prenom Etudiant</td></h5>
-                    <h4 class="card-title text-uppercase text-muted mb-0"><td>Numero Etudiant</td></h4>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="fas fa-users"></i>
-                  </div>
-                </div>
-              </div>
-              <!--<p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
-              </p>-->
-            </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt-5">
+  <!-- Formulaire Evaluation -->
+  <form (ngSubmit)="saveCours()">
+    <h3>Formulaire cours</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Nom du cours</label>
+          <input class="form-control" type="text" [(ngModel)]="cours.libelleCours" name="libelleCours" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Durée du cours</label>
+          <input class="form-control" type="text" [(ngModel)]="cours.dureeCours" name="dureeCours" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Date du cours</label>
+          <input class="form-control" type="date" [(ngModel)]="cours.dateCours" name="dateCours" />
+        </div>
+      </div>
+      <!--
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-4">
+            <input class="btn btn-primary btn-sm" (change)="selectFile1($event)" type="file" name="image">
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-4">
+            <select class="custom-select" multiple name="formations" [(ngModel)]="cours.formation">
+              <option *ngFor="let f of formations" [ngValue]="f">
+                {{f.titreFormation}}
+              </option>
+            </select>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- Page content -->
-<div class="container-fluid mt--7">
-  <!-- Table -->
-  <!-- Formulaire cours -->
-<div class="row">
-  <div class="col">
-    <div class="card shadow">
-      <div class="card-header border-0">
-        <h3 class="mb-0">Depot de cours en ligne</h3><!--Placeholder-->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Ajouter</button>
+        </div>
       </div>
-      <div class="table-responsive">
-        <table class="table align-items-center table-flush">
-            <form (ngSubmit)="saveCours()">
-                  <tr>
-                      <td>Nom du cours</td>
-                      <td><input type="text" [(ngModel)]="cours.libelleCours" name="libelleCours"/></td>
-                  </tr>
-                  <tr>
-                      <td>Duree du Cours (en heure)</td>
-                      <td><input type="text" [(ngModel)]="cours.dureeCours" name="dureeCours"/></td>
-                  </tr>
-                  <tr>
-                    <td>date du Cours</td>
-                    <td><input type="text" [(ngModel)]="cours.dateCours" name="dateCours"/></td>
-                 </tr>
-                 <tr>
-                 <td>Image</td>
-                    <td><input type="file" (change)="selectFile1($event)" name="image"></td>
-                 </tr>
+    </div>
+  </form>
 
-                  <tr>
-                      <td>Formation</td>
-                      <td>
-                          <select multiple name="formations" [(ngModel)]="cours.formation">
-                              <option *ngFor="let f of formations" [ngValue]="f">
-                                  {{f.titreFormation}}
-                              </option>
-                          </select>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td colspan="2"><button>Ajouter</button></td>
-                  </tr>
-              
-          </form>
-           
-          
-        </table>
-      </div>
-  <div class="row">
+  <!-- Table évaluations enseignants -->
+  <div class="row  mb-5">
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Tableau des cours disponible</h3>
+          <h3 class="mb-0">Liste des cours</h3>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
@@ -93,7 +76,6 @@
               <tr>
                 <th scope="col">Libelle du cours</th>
                 <th scope="col">Duree du cours (en heure)</th>
-                <th scope="col">Image</th>
                 <th scope="col">Nombre credit</th>
                 <th scope="col">Nom de formation</th>
               </tr>
@@ -102,31 +84,36 @@
               <tr *ngFor="let u of courss">
                 <td>{{u.libelleCours}}</td>
                 <td>{{u.dureeCours}}</td>
-                <td>{{u.image}}</td>
+                <td></td>
+                <td></td>
               <tr>
-             <tr *ngFor="let v of ues">
-                    <td>{{v.creditEcts}}</td>
-              <tr>
-                  <div class="card-body">
-                    <div class="card-header border-0">
-                      <h3 class="mb-0">Questions de cours</h3>
-                    </div>
-                    <form (ngSubmit)="saveQuestion()">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input matInput placeholder="categorie" type="text" [(ngModel)]="question.categorie" name="categorie">
-                            </div>
-                            <div class="col-md-6">
-                              <textarea matInput placeholder="question" type="textarea" [(ngModel)]="question.question" name="question"></textarea>
-                           </div>
-                        </div>
-                        <button mat-raised-button class="btn btn-danger pull-right">Envoyer</button>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-              </tr>
             </tbody>
           </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
