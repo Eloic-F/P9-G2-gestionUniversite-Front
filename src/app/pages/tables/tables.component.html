@@ -30,7 +30,6 @@
           <input class="form-control" type="date" [(ngModel)]="cours.dateCours" name="dateCours" />
         </div>
       </div>
-      <!--
       <div class="col-md-6">
         <div class="form-group">
           <div class="input-group mb-4">
@@ -38,7 +37,6 @@
           </div>
         </div>
       </div>
-      -->
     </div>
 
     <div class="row">
@@ -78,14 +76,18 @@
                 <th scope="col">Duree du cours (en heure)</th>
                 <th scope="col">Nombre credit</th>
                 <th scope="col">Nom de formation</th>
+                <th scope="col">Image</th>
+                <th scope="col">Supprimer</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let u of courss">
-                <td>{{u.libelleCours}}</td>
-                <td>{{u.dureeCours}}</td>
+              <tr *ngFor="let c of courss">
+                <td>{{c.libelleCours}}</td>
+                <td>{{c.dureeCours}}</td>
                 <td></td>
                 <td></td>
+                <td><img src="data:image/jpeg;base64,{{c.image}}" height="50"/></td>
+                <td><button class="btn btn-danger pull-right" (click)="delete(c.idCours)">Supprimer le cours</button></td>
               <tr>
             </tbody>
           </table>
