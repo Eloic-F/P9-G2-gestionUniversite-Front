@@ -21,4 +21,11 @@ export class CompteService {
   public delete(id:number):Observable<any>{
     return this.httpClient.delete(this.baseUrl+"/"+id); // http://localhost:7070/utilisateurs/1
   }
+  public getCompte(idCompte:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${idCompte}`);
+  }
+  public updateCompte(user:any):Observable<any>{
+    var userParse = JSON.parse(user);
+    return this.httpClient.put(this.baseUrl+'/'+userParse.idCompte,userParse);
+  }
 }
