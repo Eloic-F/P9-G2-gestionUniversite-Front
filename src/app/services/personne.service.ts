@@ -61,7 +61,7 @@ export class PersonneService {
   }
   public updatePersonne(user:any):Observable<any>{
     var userParse = JSON.parse(user);
-    return this.httpClient.put(this.baseUrl+'/'+userParse.idPersonne,userParse);
+    return this.httpClient.put(this.baseUrl+'/'+userParse.id,userParse);
   }
 
 

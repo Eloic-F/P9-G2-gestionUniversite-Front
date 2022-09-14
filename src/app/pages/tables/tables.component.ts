@@ -84,6 +84,11 @@ throw new Error('Method not implemented.');
         }
       )
     }
+
+    delete(id:number){
+      this.coursService.delete(id).subscribe(()=>{
+        this.findAllCours()});
+    }
  }
   
 
