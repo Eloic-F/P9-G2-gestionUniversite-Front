@@ -6,12 +6,18 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { EvalQuestComponent } from 'src/app/pages/eval-quest/eval-quest.component';
+import { ProfilComponent } from 'src/app/pages/profil/profil.component';
+import { EditEvaluationComponent } from 'src/app/pages/edit-evaluation/edit-evaluation.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent },
+    { path: 'espace-compte',   component: UserProfileComponent },
+    { path: 'espace-cours',         component: TablesComponent },
+    { path: 'espace-enseignant',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'contact',          component: LoginComponent }
+    { path: 'contacts',          component: LoginComponent },
+    { path: 'evaluation-question',  component:EvalQuestComponent},
+    { path: 'mon-profil',  component:ProfilComponent},
+    { path: 'edit-evaluation/:id',  component:EditEvaluationComponent}
 ];

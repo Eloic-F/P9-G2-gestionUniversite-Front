@@ -8,13 +8,15 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
+    { path: '/authentification', title: 'Authentification',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'Espace Compte',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Espace Cours',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/contact', title: 'Contact & Evaluation',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/mon-profil', title: 'Mon profil',  icon:'ni-single-02', class: '' },
+    { path: '/espace-enseignant', title: 'Espace enseignant',  icon:'ni-planet text-blue', class: '' },
+    { path: '/espace-compte', title: 'Espace Compte',  icon:'ni-single-02 text-yellow', class: '' },
+    { path: '/espace-cours', title: 'Espace Cours',  icon:'ni-books text-red', class: '' },
+    { path: '/contacts', title: 'Contacts',  icon:'ni-book-bookmark text-info', class: '' },
+    { path: '/evaluation-question', title: 'Evaluation & Question',  icon:'ni-chat-round text-orange', class: '' },
+    { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' }
 ];
 
 @Component({

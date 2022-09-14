@@ -20,11 +20,11 @@ export class Personne {
   username!: string;
   password!: string;
   classe!: Classe;
-  universite!: Universite;
-  compte!: Compte;
+  universites!: Universite[];
+  comptes!: Compte[];
   examens!: Examen[];
   evaluations!: Evaluation[];
   courses!: Cours[];
-  questions!:Question;
+  questions!:Question[];
   roles!: Role[];
 }

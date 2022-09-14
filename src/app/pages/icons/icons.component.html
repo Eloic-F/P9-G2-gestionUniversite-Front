@@ -26,6 +26,12 @@
               </tr>
             </thead>
             <tbody>
+              <tr *ngFor="let c of cours">
+                <td>{{c.libelleCours}}</td>
+                <td>{{c.dateCours}}</td>
+                <td>{{c.dureeCours}}</td>
+                <td>{{c.personne.classe}}</td>
+              </tr>
              
             </tbody>
           </table>
@@ -75,52 +81,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  Physique
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
-                  </span>
-                </td>
-                <td><button>Ajouter Pdf</button></td>
+              <form (ngSubmit)="depot()">
+              <tr *ngFor='let c of cours'>
+                <td>{{c.libelleCours}}</td>
+                <td>                  <span class="badge badge-dot mr-4">
+                  <i class="bg-warning"></i> pending
+                </span></td>
+                <td><label >Image</label>
+                  <input type="file" (change)="selectFile($event)"name='image'></td>
                 
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
               </tr>
-              <tr>
-                <td>
-                  Biologie
-                </td>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> completed
-                  </span>
-                </td>
-                <td><button>Ajouter pdf</button></td>
-                <td class="text-right">
-                  <div ngbDropdown  placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
+            </form>
+             
             </tbody>
           </table>
         </div>
@@ -171,54 +143,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  Physique
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
-                  </span>
-                  <td>L1-B</td>
-                <td><button>Retrait PDF</button></td>
-                <td><input type="number"></td>
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Biologie
-                </td>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> completed
-                  </span>
-                </td>
-                <td>L1-B</td>
-                <td><button>Retrait pdf</button></td>
-                <td><input type="number" ></td>
-                <td class="text-right">
-                  <div ngbDropdown  placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
+              <form (ngSubmit)="correction()">
+             <tr *ngFor="let e of examens">
+             <td>{{e.typeExamen}}</td>
+             <td>                  <span class="badge badge-dot mr-4">
+              <i class="bg-warning"></i> pending
+            </span></td>
+            <td>{{e.personne.classe}}</td>
+            <td><label >Pdf</label>
+              <input type="file" (change)="selectFile($event)"name='correction'></td>
+            <td><input type="number"[(ngModel)]="examen.note" name="note"></td>
+          
+          </tr>
+        </form>
             </tbody>
           </table>
         </div>
@@ -267,10 +204,12 @@
               </tr>
             </thead>
             <tbody>
-              <td>Exam Phy Plasmas</td>
-              <td>Phy Plasmas</td>
-              <td>M2-PFA</td>
-              <td><button>Récupérer Examens</button></td>
+            <tr *ngFor="let e of examens">
+              <td>{{e.typeExamen}}</td>
+              <td>{{e.personne.cours}}</td>
+              <td>{{e.personne.classe}}</td>
+              <td><button>Retrait pdf</button></td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -321,56 +260,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  Timothée
-                </td>
-                <td>Why ?</td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
-                  </span>
-                </td>
-                <td><input type="text" ></td>
-                <td><button>Submit</button></td>
-                
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Sarah
-                </td>
-                <td>Oui + Oui = ???</td>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> completed
-                  </span>
-                </td>
-                <td><input type="text"></td>
-                <td><button>Submit</button></td>
-                <td class="text-right">
-                  <div ngbDropdown  placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
+              <form (ngSubmit)="reponse()"></form>
+             <tr *ngFor="let q of questions">
+              <td>{{q.personne.nom}}</td>
+              <td>{{q.question}}</td>
+              <td>                  <span class="badge badge-dot mr-4">
+                <i class="bg-warning"></i> pending
+              </span></td>
+              <td><input type="text" [(ngModel)]="question.question"></td>
+              <td><button>Envoyer</button></td>
+             </tr>
             </tbody>
           </table>
         </div>

@@ -2,9 +2,8 @@
 
 <div class="card" style="width: 80%;">
   <div class="card-body">
-    <h2 class="card-title">Ajouter un compte</h2>
+    <h1 class="card-title">Ajouter un compte</h1>
     <form (ngSubmit)="save()">
-      <input type="text" placeholder="id_personne" [(ngModel)]="compte.personne" name ="personne">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -19,6 +18,69 @@
           </div>
         </div>
       </div>
+      <h2 class="card-title">Ajouter un role</h2>
+                <td>
+                    <select multiple name="roles" [(ngModel)]="personne.roles">
+                        <option *ngFor="let r of roles" [ngValue]="r">
+                            {{r.libelleRole}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une academie</h2>
+                <td>
+                    <select multiple name="academies" [(ngModel)]="academie.nomAcademie">
+                        <option *ngFor="let ac of academies" [ngValue]="ac">
+                            {{ac.nomAcademie}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+       <h2 class="card-title">Ajouter une Universite</h2>
+                <td>
+                    <select multiple name="universites" [(ngModel)]="universite.nomUniversite">
+                        <option *ngFor="let uni of universites" [ngValue]="uni">
+                            {{uni.nomUniversite}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+        <h2 class="card-title">Ajouter un centre de recherche</h2>
+                <td>
+                    <select multiple name="centreDeRecherches" [(ngModel)]="centreDeRecherche.nomCentreDeRecherche">
+                        <option *ngFor="let cdr of centreDeRecherches" [ngValue]="cdr">
+                            {{cdr.nomCentreDeRecherche}}
+                        </option>
+                    </select>
+                </td>
+                <br> 
+      <h2 class="card-title">Ajouter une section</h2>
+                <td>
+                    <select multiple name="sections" [(ngModel)]="section.nomSection">
+                        <option *ngFor="let sec of sections" [ngValue]="sec">
+                            {{sec.nomSection}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une formation</h2>
+              <h4 class="card-title">Unité d'enseignement</h4>
+                <td>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                        <option *ngFor="let fo of formations" [ngValue]="fo">
+                            {{fo.titreFormation}}
+                        </option>
+                    </select>
+               <!-- <h4 class="card-title">Grade</h4>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                    <option *ngFor="let fo of formations" [ngValue]="fo">
+                           {{fo.gradeFormation}}
+                    </option>
+                    </select>-->
+                </td>
+                <br>   
+
+      <h2 class="card-title">Coordonnées de l'utilisateur</h2>     
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -40,6 +102,7 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -54,14 +117,16 @@
           </div>
         </div>
       </div>
-      <!--
-      <div class="row">
+     
+      <!--<div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <input type="text" placeholder="Adresse" [(ngModel)]="personne.adressePersonne.rue" name ="rue">
+            <input type="text" placeholder="Adresse" [(ngModel)]="personne.rue" name ="rue">
           </div>
         </div>
       </div>-->
+
+
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -81,8 +146,9 @@
     </form>
   </div>
 </div>
-
-
+     
+<br>
+<h2 class="card-title">Gestion des comptes</h2>
 
 <div class="table-responsive">
   <table class="table align-items-center table-flush">
@@ -93,80 +159,69 @@
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
         <th scope="col">Date de naissance</th>
+        <!--<th scope="col">Adresse : rue</th>-->
         <th scope="col">Email</th>
         <th scope="col">Numero de téléphone</th>
-        <!--<th scope="col">Adresse</th>-->
         <th scope="col">Identifiant</th>
         <th scope="col">Mot de passe</th>
+        <th scope="col">Roles</th>
         <th scope="col">Action</th>
 
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of comptes, let p of personnes" >
-          <th scope="row">
-            <div class="media align-items-center">
-              <a href="#" class="avatar rounded-circle mr-3">
-               <img alt="Image placeholder" src="assets/img/theme/bootstrap.jpg">
-              </a>
-              <div class="media-body">
-                 <span class="mb-0 text-sm">{{c.numeroCompte}}</span>
-              </div>
-            </div>
-          </th>
-          <td>
-            <span class="badge badge-dot mr-4">
-              <i class="bg-warning"></i> {{c.statut}}
-            </span>
-          </td>
-          <td>{{p.nom}}</td>
-          <td>{{p.prenom}}</td>
-          <td>{{p.dateNaissance}}</td>
-          <td>{{p.email}}</td>
-          <td>{{p.numeroTel}}</td>
-          <td>{{p.username}}</td>
-          <td>{{p.password}}</td>
+      <tr *ngFor="let p of personnes ; let i = index" >
+          <td>{{comptes[i].numeroCompte}}</td>
+          <td>{{comptes[i].statut}}</td>
+          <td>{{personnes[i].nom}}</td>
+          <td>{{personnes[i].prenom}}</td>
+          <td>{{personnes[i].dateNaissance}}</td>
+         <!--<td>{{personnes[i].rue}}</td>--> 
+          <td>{{personnes[i].email}}</td>
+          <td>{{personnes[i].numeroTel}}</td>
+          <td>{{personnes[i].username}}</td>
+          <td>{{personnes[i].password}}</td>
+         <!-- <td>{{roles[i].libelleRole}}</td> -->
           <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Supprimer le compte ?</button></td>
 
-         <!--<td>
-          <div class="avatar-group">
-            <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-              <img alt="Image placeholder" src="assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
-            </a>
-            <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-              <img alt="Image placeholder" src="assets/img/theme/team-2-800x800.jpg" class="rounded-circle">
-            </a>
-            <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-              <img alt="Image placeholder" src="assets/img/theme/team-3-800x800.jpg" class="rounded-circle">
-            </a>
-            <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-              <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
-            </a>
-          </div>
-          </td>-->
-         <!--<td>
-          <div class="d-flex align-items-center">
-            <span class="mr-2">60%</span>
-            <div>
-              <div class="progress">
-                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-              </div>
-            </div>
-          </div>
-         </td>
-         <td class="text-right">
-          <div ngbDropdown placement="bottom-right">
-            <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-              <i class="fas fa-ellipsis-v"></i>
-            </a>
-            <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-          </td>-->
       </tr>
     </tbody>
   </table>
+
+  <br>
+  <h2 class="card-title">Gestion candidature des enseignants</h2>
+
+  <div class="table-responsive">
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Email</th>
+          <th scope="col">Numero de téléphone</th>
+          <th scope="col">Identifiant</th>
+          <th scope="col">Mot de passe</th>
+          <th scope="col">Roles</th>
+          <th scope="col">Action</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of personnes ; let i = index" >
+            <td>{{personnes[i].nom}}</td>
+            <td>{{personnes[i].prenom}}</td>
+            <td>{{personnes[i].dateNaissance}}</td>
+           <!--<td>{{personnes[i].rue}}</td>--> 
+            <td>{{personnes[i].email}}</td>
+            <td>{{personnes[i].numeroTel}}</td>
+            <td>{{personnes[i].username}}</td>
+            <td>{{personnes[i].password}}</td>
+            <!--<td>{{roles[i].libelleRole}}</td> -->
+            <td><button class="btn btn-danger pull-right" (click)="delete(p.id)">Valider la candidature ?</button></td>
+            <td><button (click)="editUser(p)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+
 </div>

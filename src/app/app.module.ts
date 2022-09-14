@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -26,6 +26,10 @@ import { EvaluationService } from './services/evaluation.service';
 import { FormationService } from './services/formation.service';
 import { SectionService } from './services/section.service';
 import { UniversiteService } from './services/universite.service';
+import { EvalQuestComponent } from './pages/eval-quest/eval-quest.component';
+import { ProfilComponent } from './pages/profil/profil.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditEvaluationComponent } from './pages/edit-evaluation/edit-evaluation.component';
 
 
 
@@ -33,6 +37,7 @@ import { UniversiteService } from './services/universite.service';
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
@@ -42,7 +47,10 @@ import { UniversiteService } from './services/universite.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    ProfilComponent,
+    EditUserComponent,
+    EditEvaluationComponent
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,

@@ -15,12 +15,21 @@ export class EvaluationService {
     return this.httpClient.get<any>(`${this.baseUrl}`);
   }
 
+  public findOne(idEvaluation:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}/${idEvaluation}`);
+  }
+
   public addEvaluation(evaluation:Evaluation):Observable<any>{
     return this.httpClient.post<any>(`${this.baseUrl}`, evaluation);
   }
 
   public deleteEvaluation(idEvaluation:number):Observable<void>{
     return this.httpClient.delete<any>(`${this.baseUrl}/${idEvaluation}`);
+  }
+
+  public updateEvaluation(evaluation:any):Observable<any>{
+    var evalParse=JSON.parse(evaluation);
+    return this.httpClient.put(`${this.baseUrl}/${evalParse.idEvaluation}`, evalParse);
   }
 
   /*public updateEvaluation(evaluation:Evaluation):Observable<any>{

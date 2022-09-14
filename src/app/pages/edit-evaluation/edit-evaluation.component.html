@@ -1,0 +1,30 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt-5">
+  <!-- Formulaire Evaluation -->
+  <form [formGroup]="editForm">
+    <h3>Modification de l'évaluation</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group mb-4">
+            <textarea class="form-control form-control-alternative" rows="3" placeholder="Evaluer le cours"
+              name="commentaire" formControlName="commentaire" id="" [(ngModel)]="evaluation.commentaire"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="updateEvaluation()">Editer l'évaluation</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
