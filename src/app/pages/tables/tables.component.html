@@ -1,14 +1,13 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
   style="min-height: 600px; background-image: url(assets/img/theme/pexels-pixabay-356065.jpg); background-size: cover; background-position: center top; background-attachment:fixed">
   <!-- Mask -->
-  <span class="mask bg-gradient-primary opacity-4"></span> 
+  <span class="mask bg-gradient-primary opacity-4"></span>
   <div class="container-fluid">
     <div class="header-body">
     </div>
   </div>
 </div>
 <!-- Page content -->
-<<<<<<< HEAD
 <div class="container-fluid mt-5">
   <!-- Formulaire Evaluation -->
   <form (ngSubmit)="saveCours()">
@@ -67,11 +66,6 @@
 
   <!-- Table évaluations enseignants -->
   <div class="row  mb-5">
-=======
-<div class="container-fluid mt--7" [hidden]="authorities()">
-  <!-- Table -->
-  <div class="row">
->>>>>>> frontSecurity
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
@@ -95,8 +89,9 @@
                 <td>{{c.dureeCours}}</td>
                 <td></td>
                 <td></td>
-                <td><img src="data:image/jpeg;base64,{{c.image}}" height="50"/></td>
-                <td><button class="btn btn-danger pull-right" (click)="delete(c.idCours)">Supprimer le cours</button></td>
+                <td><img src="data:image/jpeg;base64,{{c.image}}" height="50" /></td>
+                <td><button class="btn btn-danger pull-right" (click)="delete(c.idCours)">Supprimer le cours</button>
+                </td>
               <tr>
             </tbody>
           </table>

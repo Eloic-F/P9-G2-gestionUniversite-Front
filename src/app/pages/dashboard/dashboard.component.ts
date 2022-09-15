@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 import { Cours } from 'src/app/model/cours';
 import { Personne } from 'src/app/model/personne';
-import { AppService } from 'src/app/services/app.service';
+import { AppService } from 'src/app/app.service';
 import { ExamenService } from 'src/app/services/examen.service';
 import { PersonneService } from 'src/app/services/personne.service';
 import { StatsService } from 'src/app/services/stats.service';

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Evaluation } from 'src/app/model/evaluation';
 import { Personne } from 'src/app/model/personne';
 import { Question } from 'src/app/model/question';
-import { AppService } from 'src/app/services/app.service';
+import { AppService } from 'src/app/app.service';
 import { CoursService } from 'src/app/services/cours.service';
 import { EvaluationService } from 'src/app/services/evaluation.service';
 import { PersonneService } from 'src/app/services/personne.service';

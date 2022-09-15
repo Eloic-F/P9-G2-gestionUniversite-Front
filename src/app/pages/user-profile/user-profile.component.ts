@@ -142,8 +142,6 @@ export class UserProfileComponent implements OnInit {
     // localhost:4200/editUser/3
     this.router.navigate(['/editUser',user.id]);
     }
-<<<<<<< HEAD
-
    editCompte(compte:Compte){
     // Step 2
     localStorage.removeItem("editCompteIdCompte");
@@ -155,8 +153,3 @@ export class UserProfileComponent implements OnInit {
     }
 
 }
-=======
-   }
-   
-
->>>>>>> frontSecurity

@@ -1,47 +1,76 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-  <div class="container-fluid">
-    <div class="header-body">
-    </div>
-  </div>
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+   style="min-height: 600px; background-image: url(assets/img/theme/pexels-pixabay-256490.jpg); background-size: cover; background-position: -75%;background-attachment:fixed">
+   <!-- Mask -->
+   <span class="mask bg-gradient-primary opacity-4"></span>
+   <div class="container-fluid">
+      <div class="header-body">
+      </div>
+   </div>
 </div>
+
 <!-- Page content -->
-<div>
-    <h1>Mise à jour d'un utilisateur</h1>
-    <form [formGroup]="editForm">
-        <table>
-             <tr>
-                 <td>Nom</td>
-                 <td><input type="text" [(ngModel)]="personne.nom" formControlName="nom"/></td>
-             </tr>
-             <tr>
-                <td>Prénom</td>
-                <td><input type="text" [(ngModel)]="personne.prenom" formControlName="prenom"/></td>
-             </tr>
-             <tr>
-                <td>Date de naissance</td>
-                <td><input type="date" [(ngModel)]="personne.dateNaissance" formControlName="dateNaissance"/></td>
-             </tr>
-             <tr>
-                <td>Email</td>
-                <td><input type="test" [(ngModel)]="personne.email" formControlName="email"/></td>
-             </tr>
-             <tr>
-                <td>Numero de telephone</td>
-                <td><input type="text" [(ngModel)]="personne.numeroTel" formControlName="numeroTel"/></td>
-             </tr>
-             
-             <tr>
-                <td>Identifiant</td>
-                <td><input type="text" [(ngModel)]="personne.username" formControlName="username"/></td>
-             </tr>
-             <tr>
-                <td>Mot de passe</td>
-                <td><input type="text" [(ngModel)]="personne.password" formControlName="password"/></td>
-             </tr>
-             <tr>
-                <td colspan="2"><button (click)="updatePersonne()">Valider la candidature</button></td>
-             </tr>
-             
-        </table>
-    </form>
+<div class="container-fluid mt-5">
+   <!-- Formulaire Evaluation -->
+   <form [formGroup]="editForm">
+      <h3>Mise à jour de l'utilisateur</h3>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Nom</label>
+               <input class="form-control" type="text" [(ngModel)]="personne.nom" formControlName="nom" />
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+
+               <label for="">Prénom</label>
+               <input class="form-control" type="text" [(ngModel)]="personne.prenom" formControlName="prenom" />
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Date de naissance</label>
+               <input class="form-control" type="date" [(ngModel)]="personne.dateNaissance"
+                  formControlName="dateNaissance" />
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Email</label>
+               <input class="form-control" type="email" [(ngModel)]="personne.email" formControlName="email" />
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Numéro de téléphone</label>
+               <input class="form-control" type="tel" [(ngModel)]="personne.numeroTel" formControlName="numeroTel" />
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Username</label>
+               <input class="form-control" type="text" [(ngModel)]="personne.username" formControlName="username" />
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Mot de passe</label>
+               <input class="form-control" type="password" [(ngModel)]="personne.password" formControlName="password" />
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-6">
+            <div class="form-group">
+               <button class="btn btn-primary" (click)="updatePersonne()">Mettre à jour</button>
+            </div>
+         </div>
+      </div>
+   </form>
 </div>
