@@ -61,7 +61,7 @@
                 <i class="ni location_pin mr-2"></i>Bucharest, Romania
               </div>-->
             <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2"></i>Role - 
+              <i class="ni business_briefcase-24 mr-2"></i><span *ngFor="let r of personne.roles">{{r.libelleRole}}</span>
             </div>
             <div>
               <i class="ni education_hat mr-2"></i>Nom université

@@ -3,6 +3,8 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+import { PersonneService } from 'src/app/services/personne.service';
+import { Personne } from 'src/app/model/personne';
 
 @Component({
   selector: 'app-navbar',
@@ -10,16 +12,21 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  userId= sessionStorage.getItem("UserId");
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router,private appService:AppService) {
+
+  personne:Personne=new Personne();
+  constructor(location: Location,  private element: ElementRef, private router: Router,
+    private appService:AppService,private personneService:PersonneService) {
 
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.findById(this.userId);
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -46,5 +53,8 @@ export class NavbarComponent implements OnInit {
        return true;
      }
    }
+   findById(username:string  ){
+    this.personneService.findOne(Number(this.userId)).subscribe((data:Personne)=>{this.personne=data;console.log(this.personne.id)})
+  }
 
 }

@@ -9,7 +9,7 @@
 </div>
 
 <!-- Page content -->
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5" [hidden]="!authorities()">
   <!-- Formulaires questions -->
   <form (ngSubmit)="save()">
     <h2>Ajouter un profil</h2>
@@ -142,7 +142,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="Mot de passe" [(ngModel)]="personne.password"
+          <input class="form-control" type="password" placeholder="Mot de passe" [(ngModel)]="personne.password"
             name="password">
         </div>
       </div>
@@ -164,7 +164,7 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Numero du compte</th>
+                <!--<th scope="col">Numero du compte</th>-->
                 <!--<th scope="col">Status</th>-->
                 <th scope="col">Nom</th>
                 <th scope="col">Prenom</th>
@@ -183,7 +183,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let p of personnes ; let i = index">
-                <td>{{comptes[i].numeroCompte}}</td>
+                <!--<td>{{comptes[i].numeroCompte}}</td>-->
                 <!--<td>{{comptes[i].statut}}</td>-->
                 <td>{{personnes[i].nom}}</td>
                 <td>{{personnes[i].prenom}}</td>
