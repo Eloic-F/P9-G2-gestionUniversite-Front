@@ -21,6 +21,7 @@ import { UniversiteService } from 'src/app/services/universite.service';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent implements OnInit {
+  userId= sessionStorage.getItem("UserId");
   comptes!: any[];
   personnes!: any[];
   roles!: any[];
@@ -58,6 +59,7 @@ export class ProfilComponent implements OnInit {
     this.findAllCentreDeRecherche();
     this.findAllSection();
     this.findAllFormation();
+    this.findById(this.userId);
   }
   findAllCompte(){
     this.compteService.findAll().subscribe((data: any[]) => {this.comptes = data;});
@@ -83,6 +85,10 @@ export class ProfilComponent implements OnInit {
   }
   findAllFormation(){
     this.formationService.findAll().subscribe((data: any[]) => {this.formations = data;});
+  }
+
+  findById(username:string  ){
+    this.personneService.findOne(Number(this.userId)).subscribe((data:Personne)=>{this.personne=data;console.log(this.personne.id)})
   }
   /*
   authenticated(){

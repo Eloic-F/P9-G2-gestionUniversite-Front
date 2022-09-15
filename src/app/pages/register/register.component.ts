@@ -13,12 +13,12 @@ import { PersonneService } from 'src/app/services/personne.service';
 export class RegisterComponent {
   credentials = {username:'', password:''}
   constructor(private appService:AppService,private httplClient:HttpClient,private router:Router,private personneService:PersonneService) { }
+  personne:Personne=new Personne()
   login(){
     this.appService.authenticate(this.credentials,()=>{this.router.navigateByUrl("/mon-profil")});
-    var personne:Personne = new Personne();
-    this.personneService.findOneByUsername(this.credentials.username).subscribe((data:any)=>{personne=data});
-    sessionStorage.setItem("UserId",personne.id.toString());
-   // sessionStorage.setItem("Username",personne.username.toString())// A afficher l'username dans la page, pour la fonctionnalité.
+    var username!:string;
+    username=this.credentials.username;
+    this.personneService.findOneByUsername(username).subscribe((data:Personne)=>{this.personne=data;sessionStorage.setItem("UserId",this.personne.id.toString())});
     return false;
   }
 

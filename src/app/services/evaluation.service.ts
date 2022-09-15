@@ -23,7 +23,7 @@ export class EvaluationService {
     return this.httpClient.post<any>(`${this.baseUrl}`, evaluation);
   }
 
-  public deleteEvaluation(idEvaluation:number):Observable<void>{
+  public deleteEvaluation(idEvaluation:number):Observable<any>{
     return this.httpClient.delete<any>(`${this.baseUrl}/${idEvaluation}`);
   }
 
