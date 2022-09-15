@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, Injectable } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -31,8 +31,19 @@ import { ProfilComponent } from './pages/profil/profil.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditEvaluationComponent } from './pages/edit-evaluation/edit-evaluation.component';
 import { EditCompteComponent } from './edit-compte/edit-compte.component';
+import { AppService } from './app.service';
+import { Observable } from 'rxjs';
 
-
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor{
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+ const xhr=req.clone({
+  headers: req.headers.set('X-Requested-With','XMLHttpRequest')
+ });   
+    return next.handle(xhr);
+  }
+  
+}
 
 @NgModule({
   imports: [
@@ -56,7 +67,7 @@ import { EditCompteComponent } from './edit-compte/edit-compte.component';
   ],
   providers: [UEService,RoleService,QuestionService,ExamenService,CompteService,PersonneService,
     AcademieService,CentreDeRechercheService,ClasseService,CoursService,EvaluationService,
-    FormationService,SectionService,UniversiteService],
+    FormationService,SectionService,UniversiteService,AppService, {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appService:AppService) { }
 
   ngOnInit() {
   }
+  
+  authenticated(){
+    return  this.appService.authenticated; // false
+   }
+   authorities(){
+     if(this.appService.isAdmin == true){
+       return false; // [hidden] = false  isAdmin = true
+     }else{
+       return true; // [hidden] = true isAdmin = false
+     }
+   }
 
 }
