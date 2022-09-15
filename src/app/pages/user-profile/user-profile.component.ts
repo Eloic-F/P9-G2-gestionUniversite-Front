@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 import { Academie } from 'src/app/model/academie';
 import { CentreDeRecherche } from 'src/app/model/centre-de-recherche';
 import { Compte } from 'src/app/model/compte';
@@ -47,7 +48,8 @@ export class UserProfileComponent implements OnInit {
               private centreDeRechercheService:CentreDeRechercheService,
               private sectionService:SectionService,
               private formationService:SectionService,
-              private router:Router) { }
+              private router:Router,
+              private appService:AppService) { }
 
   ngOnInit(): void {
     this.findAllCompte();
@@ -150,6 +152,14 @@ export class UserProfileComponent implements OnInit {
     // Step 3
     // localhost:4200/editUser/3
     this.router.navigate(['/editCompte',compte.idCompte]);
+    }
+
+    authorities(){
+      if(this.appService.isEnseignant == true || this.appService.isEtudiant ==true){
+        return false;
+      }else{
+        return true;
+      }
     }
 
 }
