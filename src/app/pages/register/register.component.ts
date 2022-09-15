@@ -22,4 +22,7 @@ export class RegisterComponent {
     return false;
   }
 
+  authenticated(){
+    return  this.appService.authenticated; // false
+   }
 }

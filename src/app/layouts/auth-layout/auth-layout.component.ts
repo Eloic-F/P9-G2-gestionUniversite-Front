@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-auth-layout',
@@ -10,7 +11,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
   test: Date = new Date();
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private appService:AppService) { }
 
   ngOnInit() {
     var html = document.getElementsByTagName("html")[0];
