@@ -48,6 +48,7 @@ export class IconsComponent implements OnInit {
     let name=sessionStorage.getItem("Username");
     if(!this.userId){
       alert("ErreurID")
+      console.log(this.userId)
       return;
     }
     this.editForm=this.formBuilder.group({

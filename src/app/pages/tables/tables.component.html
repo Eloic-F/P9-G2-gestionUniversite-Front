@@ -10,7 +10,7 @@
 <!-- Page content -->
 <div class="container-fluid mt-5">
   <!-- Formulaire Evaluation -->
-  <form (ngSubmit)="saveCours()">
+  <form (ngSubmit)="saveCours()"  [hidden]="!authorities()">
     <h3>Formulaire cours</h3>
     <div class="row">
       <div class="col-md-6">
@@ -80,7 +80,7 @@
                 <th scope="col">Nombre credit</th>
                 <th scope="col">Nom de formation</th>
                 <th scope="col">Image</th>
-                <th scope="col">Supprimer</th>
+                <th scope="col"   [hidden]="!authorities()">Supprimer</th>
               </tr>
             </thead>
             <tbody>
@@ -90,7 +90,7 @@
                 <td></td>
                 <td></td>
                 <td><img src="data:image/jpeg;base64,{{c.image}}" height="50" /></td>
-                <td><button class="btn btn-danger pull-right" (click)="delete(c.idCours)">Supprimer le cours</button>
+                <td   [hidden]="!authorities()"><button class="btn btn-danger pull-right" (click)="delete(c.idCours)">Supprimer le cours</button>
                 </td>
               <tr>
             </tbody>

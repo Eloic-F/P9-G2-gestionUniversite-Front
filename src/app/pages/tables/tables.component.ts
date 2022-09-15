@@ -99,7 +99,7 @@ throw new Error('Method not implemented.');
     }
     //
   authorities(){
-    if(this.appService.isAdmin == true || this.appService.isEtudiant ==true){
+    if(this.appService.isEtudiant ==true){
       return false;
     }else{
       return true;

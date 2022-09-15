@@ -10,6 +10,7 @@ export class AppService {
   isAdmin=false;
   isEnseignant=false;
   isEtudiant=false;
+  username!: string;
   constructor(private httpClient:HttpClient) { }
   authenticate(credentials:any,callback:any){
     const headers = new HttpHeaders(
@@ -21,6 +22,7 @@ export class AppService {
       this.responseAll = response;
       if(this.responseAll['username']){
         this.authenticated = true;
+        this.username=credentials.username;
         for(let i=0;i<this.responseAll['roles'].length;i++){
              if(this.responseAll['roles'][i]['idRole']==1){
                this.isAdmin = true;
