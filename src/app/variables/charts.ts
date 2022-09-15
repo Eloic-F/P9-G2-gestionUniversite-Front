@@ -295,7 +295,7 @@ export const chartExample1 = {
         ticks: {
           callback: function(value) {
             if (!(value % 10)) {
-              return '$' + value + 'k';
+              return '' + value + '%';
             }
           }
         }
@@ -303,9 +303,9 @@ export const chartExample1 = {
     }
   },
   data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['Exam1', 'Exam2', 'Exam3', 'Exam4', 'Exam5', 'Exam6', 'Exam7', 'Exam8'],
     datasets: [{
-      label: 'Performance',
+      label: 'Taux de réussite',
       data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
     }]
   }

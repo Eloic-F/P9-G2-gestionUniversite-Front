@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
   style="min-height: 600px; background-image: url(assets/img/theme/pexels-pixabay-256490.jpg); background-size: cover; background-position: -75%;background-attachment:fixed">
   <!-- Mask -->
@@ -5,6 +6,159 @@
   <div class="container-fluid">
     <div class="header-body">
     </div>
+=======
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+
+<div class="card" style="width: 80%;">
+  <div class="card-body">
+    <h1 class="card-title">Ajouter un compte</h1>
+    <form (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Numero du compte" [(ngModel)]="compte.numeroCompte" name ="numeroCompte">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Statut" [(ngModel)]="compte.statut" name ="statut">
+          </div>
+        </div>
+      </div>
+      <h2 class="card-title">Ajouter un role</h2>
+                <td>
+                    <select multiple name="roles" [(ngModel)]="personne.roles">
+                        <option *ngFor="let r of roles" [ngValue]="r">
+                            {{r.libelleRole}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une academie</h2>
+                <td>
+                    <select multiple name="academies" [(ngModel)]="academie.nomAcademie">
+                        <option *ngFor="let ac of academies" [ngValue]="ac">
+                            {{ac.nomAcademie}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+       <h2 class="card-title">Ajouter une Universite</h2>
+                <td>
+                    <select multiple name="universites" [(ngModel)]="universite.nomUniversite">
+                        <option *ngFor="let uni of universites" [ngValue]="uni">
+                            {{uni.nomUniversite}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+        <h2 class="card-title">Ajouter un centre de recherche</h2>
+                <td>
+                    <select multiple name="centreDeRecherches" [(ngModel)]="centreDeRecherche.nomCentreDeRecherche">
+                        <option *ngFor="let cdr of centreDeRecherches" [ngValue]="cdr">
+                            {{cdr.nomCentreDeRecherche}}
+                        </option>
+                    </select>
+                </td>
+                <br> 
+      <h2 class="card-title">Ajouter une section</h2>
+                <td>
+                    <select multiple name="sections" [(ngModel)]="section.nomSection">
+                        <option *ngFor="let sec of sections" [ngValue]="sec">
+                            {{sec.nomSection}}
+                        </option>
+                    </select>
+                </td>
+                <br>
+      <h2 class="card-title">Ajouter une formation</h2>
+              <h4 class="card-title">Unité d'enseignement</h4>
+                <td>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                        <option *ngFor="let fo of formations" [ngValue]="fo">
+                            {{fo.titreFormation}}
+                        </option>
+                    </select>
+               <!-- <h4 class="card-title">Grade</h4>
+                    <select multiple name="formations" [(ngModel)]="formation.titreFormation">
+                    <option *ngFor="let fo of formations" [ngValue]="fo">
+                           {{fo.gradeFormation}}
+                    </option>
+                    </select>-->
+                </td>
+                <br>   
+
+      <h2 class="card-title">Coordonnées de l'utilisateur</h2>     
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Nom" [(ngModel)]="personne.nom" name ="nom">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Prenom" [(ngModel)]="personne.prenom" name ="prenom">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="Date" placeholder="Date de naissance" [(ngModel)]="personne.dateNaissance" name ="dateNaissance">
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Email" [(ngModel)]="personne.email" name ="email">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Numéro de téléphone" [(ngModel)]="personne.numeroTel" name ="numeroTel">
+          </div>
+        </div>
+      </div>
+     
+      <!--<div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Adresse" [(ngModel)]="personne.rue" name ="rue">
+          </div>
+        </div>
+      </div>-->
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Identifiant" [(ngModel)]="personne.username" name ="username">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" placeholder="Mot de passe" [(ngModel)]="personne.password" name ="password">
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Ajouter un nouveau compte</button>
+      <div class="clearfix"></div>
+    </form>
+>>>>>>> frontSecurity
   </div>
 </div>
 <!-- Page content -->

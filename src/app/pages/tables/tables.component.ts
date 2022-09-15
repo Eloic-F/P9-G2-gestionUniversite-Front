@@ -3,7 +3,11 @@ import { Cours } from 'src/app/model/cours';
 import { Formation } from 'src/app/model/formation';
 import { Personne } from 'src/app/model/personne';
 import { Question } from 'src/app/model/question';
+<<<<<<< HEAD
 import { UE } from 'src/app/model/ue';
+=======
+import { AppService } from 'src/app/services/app.service';
+>>>>>>> frontSecurity
 import { CoursService } from 'src/app/services/cours.service';
 import { FormationService } from 'src/app/services/formation.service';
 import { PersonneService } from 'src/app/services/personne.service';
@@ -33,10 +37,22 @@ throw new Error('Method not implemented.');
   selectedFiles:FileList;
   currentFileUpload:File;
  
+<<<<<<< HEAD
   constructor(private coursService:CoursService,private questionService:QuestionService,private personneService:PersonneService, 
     private ueService:UEService, private formationService:FormationService) { }
+=======
+  constructor(private coursService:CoursService,private questionService:QuestionService,
+    private appService:AppService) { }
+>>>>>>> frontSecurity
 
   ngOnInit(): void {
+    let userId=sessionStorage.getItem('UserId');
+    let name=sessionStorage.getItem("Username");
+    if(!userId){
+      alert("ErreurID")
+      return;
+    }
+    
     this.findAllCours();
     this.findAllQuestion();
     this.findAllPersonne();
@@ -74,6 +90,7 @@ throw new Error('Method not implemented.');
       this.selectedFiles = event.target.files;
     }
 
+<<<<<<< HEAD
     saveCours(){
       this.currentFileUpload = this.selectedFiles.item(0);
       this.coursService.save(this.currentFileUpload,this.cours).subscribe(
@@ -89,6 +106,17 @@ throw new Error('Method not implemented.');
       this.coursService.delete(id).subscribe(()=>{
         this.findAllCours()});
     }
+=======
+    //
+  authorities(){
+    if(this.appService.isAdmin == true || this.appService.isEtudiant ==true){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+>>>>>>> frontSecurity
  }
   
 

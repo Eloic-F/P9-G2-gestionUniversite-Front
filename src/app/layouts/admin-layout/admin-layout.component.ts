@@ -9,19 +9,10 @@ import { AppService } from 'src/app/app.service';
 export class AdminLayoutComponent implements OnInit {
 
   constructor(private appService:AppService) { }
-
-  ngOnInit() {
+  ngOnInit(): void {
   }
   
   authenticated(){
     return  this.appService.authenticated; // false
    }
-   authorities(){
-     if(this.appService.isAdmin == true){
-       return false; // [hidden] = false  isAdmin = true
-     }else{
-       return true; // [hidden] = true isAdmin = false
-     }
-   }
-
 }

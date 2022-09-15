@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   public listTitles: any[];
   public location: Location;
   constructor(location: Location,  private element: ElementRef, private router: Router,private appService:AppService) {
+
     this.location = location;
   }
 
@@ -33,8 +34,17 @@ export class NavbarComponent implements OnInit {
     }
     return 'Dashboard';
   }
+
   authenticated(){
     return  this.appService.authenticated; // false
+   }
+   //
+   authorities(){
+     if(this.appService.isAdmin == true){
+       return false;
+     }else{
+       return true;
+     }
    }
 
 }

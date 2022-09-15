@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
   style="min-height: 600px; background-image: url(assets/img/theme/pexels-fauxels-3184328.jpg); background-size: cover; background-position: center top;background-attachment:fixed">
   <!-- Mask -->
   <span class="mask bg-gradient-primary opacity-4"></span>
+=======
+
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+>>>>>>> frontSecurity
   <div class="container-fluid">
     <div class="header-body">
       <!-- Card stats -->
@@ -10,7 +16,7 @@
 </div>
 <!--TOUT CECI EST UN PLACEHOLDER-->
 <!-- Page content -->
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--7" [hidden]="authorities()">
   <!-- Table -->
   <div class="row">
     <div class="col">
@@ -84,17 +90,20 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="depot()">
+              
               <tr *ngFor='let c of cours'>
+                <form (ngSubmit)="depot(c.idCours)">
+                  <form [formGroup]="coursForm">
                 <td>{{c.libelleCours}}</td>
                 <td>                  <span class="badge badge-dot mr-4">
                   <i class="bg-warning"></i> pending
                 </span></td>
                 <td><label >Image</label>
-                  <input type="file" (change)="selectFile($event)"name='image'></td>
-                
+                  <input type="file" (change)="selectFile($event)"name='image'[(ngModel)]=cours.image formControlName="image"></td>
+                </form>
+              </form>
               </tr>
-            </form>
+            
              
             </tbody>
           </table>
@@ -146,17 +155,18 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="correction()">
+              <form (ngSubmit)="correct()">
              <tr *ngFor="let e of examens">
+              <form [formGroup]="examenForm">
              <td>{{e.typeExamen}}</td>
              <td>                  <span class="badge badge-dot mr-4">
               <i class="bg-warning"></i> pending
             </span></td>
             <td>{{e.personne.classe}}</td>
             <td><label >Pdf</label>
-              <input type="file" (change)="selectFile($event)"name='correction'></td>
-            <td><input type="number"[(ngModel)]="examen.note" name="note"></td>
-          
+              <input type="file" (change)="selectFile($event)"name='correction' formControlName="correction"></td>
+            <td><input type="number"[(ngModel)]="examen.note" name="note" formControlName="note"></td>
+          </form>
           </tr>
         </form>
             </tbody>
@@ -207,10 +217,10 @@
               </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let e of examens">
+            <tr *ngFor="let e of examens;let c of coursi">
               <td>{{e.typeExamen}}</td>
               <td>{{e.personne.cours}}</td>
-              <td>{{e.personne.classe}}</td>
+              <td>{{c}}</td>
               <td><button>Retrait pdf</button></td>
             </tr>
             </tbody>
@@ -263,16 +273,19 @@
               </tr>
             </thead>
             <tbody>
-              <form (ngSubmit)="reponse()"></form>
+             
              <tr *ngFor="let q of questions">
+              <form [formGroup]="questionForm">
               <td>{{q.personne.nom}}</td>
               <td>{{q.question}}</td>
               <td>                  <span class="badge badge-dot mr-4">
                 <i class="bg-warning"></i> pending
               </span></td>
-              <td><input type="text" [(ngModel)]="question.question"></td>
-              <td><button>Envoyer</button></td>
+              <td><input type="text" [(ngModel)]="question.question" formControlName="questions"></td>
+              <td><button (click)="reponse()">Envoyer</button></td>
+            </form>
              </tr>
+           
             </tbody>
           </table>
         </div>
